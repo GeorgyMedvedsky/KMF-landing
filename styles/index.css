@@ -139,10 +139,10 @@
   opacity: 0.5;
 }
 .menu__button_type_trigger {
-  background: url(/images/icons/menu-trigger.svg) center/contain no-repeat;
+  background: url(../images/icons/menu-trigger.svg) center/contain no-repeat;
 }
 .menu__button_type_close {
-  background: url(/images/icons/menu-close.svg) center/contain no-repeat;
+  background: url(../images/icons/menu-close.svg) center/contain no-repeat;
 }
 .menu__list {
   display: flex;
