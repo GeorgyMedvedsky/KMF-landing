@@ -1,0 +1,32 @@
+@import '../vars';
+@import '../mixins';
+
+.button {
+    border: 1px solid $button-color;
+    border-radius: 16px;
+    padding: 12px 18px;
+    @include font(16px, 600, 19px);
+    transition: .4s;
+    &:hover {
+        cursor: pointer;
+    }
+
+    &_type_primary {
+        background: none;
+        color: $button-color;
+        &:hover {
+            background: $button-color-hover;
+            border: 1px solid $button-color-hover;
+            color: #FFFFFF;
+        }
+    }
+
+    &_type_secondary {
+        background: $button-color;
+        color: #FFFFFF;
+        &:hover {
+            background: $button-color-hover;
+            border: 1px solid $button-color-hover;
+        }
+    }
+}

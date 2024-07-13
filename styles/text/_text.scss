@@ -1,0 +1,19 @@
+@import '../vars';
+
+.text {
+    display: inline;
+    margin: 0;
+
+    &_type_primary {
+        color: $font-color-primary;
+    }
+    &_type_secondary {
+        color: $font-color-secondary;
+    }
+    &_type_special {
+        background-image: $font-color-special;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
