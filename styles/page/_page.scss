@@ -1,0 +1,24 @@
+@font-face {
+    src: url(../../vendor/fonts/gilroy-regular.ttf);
+    font-family: 'Gilroy';
+    font-weight: 400;
+}
+@font-face {
+    src: url(../../vendor/fonts/gilroy-medium.ttf);
+    font-family: 'Gilroy';
+    font-weight: 500;
+}
+@font-face {
+    src: url(../../vendor/fonts/gilroy-semibold.ttf);
+    font-family: 'Gilroy';
+    font-weight: 600;
+}
+@font-face {
+    src: url(../../vendor/fonts/gilroy-bold.ttf);
+    font-family: 'Gilroy';
+    font-weight: 700;
+}
+
+.page {
+    font-family: 'Gilroy', 'Gill Sans', sans-serif;
+}

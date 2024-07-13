@@ -10,6 +10,9 @@
     &_type_secondary {
         color: $font-color-secondary;
     }
+    &_type_light {
+        color: $font-color-light;
+    }
     &_type_special {
         background-image: $font-color-special;
         background-clip: text;

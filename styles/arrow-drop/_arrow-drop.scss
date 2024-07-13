@@ -1,0 +1,14 @@
+.arrow-drop {
+    display: inline-block;
+    &:after {
+        margin-left: 10px;
+        content: url(../../images/icons/arr-select.svg);
+        display: inline-block;
+        transition: transform .3s;
+    }
+}
+.arrow-drop_open {
+    &::after {
+        transform: rotate(180deg);
+    }
+}

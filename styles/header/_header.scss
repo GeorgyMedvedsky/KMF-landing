@@ -1,0 +1,26 @@
+.header {
+    position: relative;
+    height: 72px;
+    @include flex(flex, initial, center, row);
+
+    &__lang {
+        margin-left: 24px;
+        border: none;
+        border-radius: 12px;
+        padding: 8px 12px;
+        @include font(14px, 400, 16px);
+        color: $font-color-primary;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: #F6EEE8;
+        // background-image: url(../../images/icons/arr-select.svg);
+        // background-repeat: no-repeat;
+        // background-position: right;
+        // background-size: 10px;
+    }
+
+    &__menu {
+        margin-left: auto;
+    }
+}

@@ -47,6 +47,12 @@
     font-size: 2em;
     margin: 0.67em 0;
   }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
   
   /* Grouping content
      ========================================================================== */
@@ -81,6 +87,7 @@
   
   a {
     background-color: transparent;
+    text-decoration: none;
   }
   
   /**

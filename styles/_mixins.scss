@@ -3,3 +3,13 @@
     font-weight: $weight;
     line-height: $height;
 }
+@mixin flex($display, $justify, $align, $direction) {
+    display: $display;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+@mixin visible($opacity, $visibility) {
+    opacity: $opacity;
+    visibility: $visibility;
+}
