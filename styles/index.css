@@ -52,27 +52,41 @@
   line-height: 19px;
   transition: 0.4s;
 }
-.button:hover {
-  cursor: pointer;
-}
 .button_type_primary {
   background: none;
   color: #9D097C;
-}
-.button_type_primary:hover {
-  background: #CD1BA5;
-  border: 1px solid #CD1BA5;
-  color: #FFFFFF;
 }
 .button_type_secondary {
   background: #9D097C;
   color: #FFFFFF;
 }
-.button_type_secondary:hover {
-  background: #CD1BA5;
-  border: 1px solid #CD1BA5;
-}
 
+@media (hover: hover) {
+  .button_type_primary:hover {
+    background: #CD1BA5;
+    border: 1px solid #CD1BA5;
+    color: #FFFFFF;
+  }
+}
+@media (hover: none) {
+  .button_type_primary:active {
+    background: #CD1BA5;
+    border: 1px solid #CD1BA5;
+    color: #FFFFFF;
+  }
+}
+@media (hover: hover) {
+  .button_type_secondary:hover {
+    background: #CD1BA5;
+    border: 1px solid #CD1BA5;
+  }
+}
+@media (hover: none) {
+  .button_type_secondary:active {
+    background: #CD1BA5;
+    border: 1px solid #CD1BA5;
+  }
+}
 .centering {
   padding: 0 16px;
 }
@@ -135,9 +149,6 @@
   display: inline-flex;
   transition: opacity 0.4s;
 }
-.menu__button:hover {
-  opacity: 0.5;
-}
 .menu__button_type_trigger {
   background: url(../images/icons/menu-trigger.svg) center/contain no-repeat;
 }
@@ -196,4 +207,15 @@
   opacity: 1;
   visibility: visible;
   height: auto;
+}
+
+@media (hover: hover) {
+  .menu__button:hover {
+    opacity: 0.5;
+  }
+}
+@media (hover: none) {
+  .menu__button:active {
+    opacity: 0.5;
+  }
 }/*# sourceMappingURL=index.css.map */

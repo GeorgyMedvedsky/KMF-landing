@@ -4,9 +4,7 @@
         height: 14px;
         display: inline-flex;
         transition: opacity .4s;
-        &:hover {
-            opacity: .5;
-        }
+
         &_type_trigger {
             background: url(../images/icons/menu-trigger.svg) center / contain no-repeat;
         }
@@ -53,5 +51,16 @@
             @include visible(1, visible);
             height: auto;
         }
+    }
+}
+
+@media (hover:hover) {
+    .menu__button:hover {
+        opacity: .5;
+    }
+}
+@media (hover:none) {
+    .menu__button:active {
+        opacity: .5;
     }
 }

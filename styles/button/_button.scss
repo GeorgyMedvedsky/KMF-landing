@@ -8,26 +8,41 @@
     padding: 12px 18px;
     @include font(16px, 600, 19px);
     transition: .4s;
-    &:hover {
-        cursor: pointer;
-    }
 
     &_type_primary {
         background: none;
         color: $button-color;
-        &:hover {
-            background: $button-color-hover;
-            border: 1px solid $button-color-hover;
-            color: #FFFFFF;
-        }
     }
 
     &_type_secondary {
         background: $button-color;
         color: #FFFFFF;
-        &:hover {
-            background: $button-color-hover;
-            border: 1px solid $button-color-hover;
-        }
+    }
+}
+
+@media(hover:hover) {
+    .button_type_primary:hover {
+        background: $button-color-hover;
+        border: 1px solid $button-color-hover;
+        color: #FFFFFF;
+    }
+}
+@media(hover:none) {
+    .button_type_primary:active {
+        background: $button-color-hover;
+        border: 1px solid $button-color-hover;
+        color: #FFFFFF;
+    }
+}
+@media(hover:hover) {
+    .button_type_secondary:hover {
+        background: $button-color-hover;
+        border: 1px solid $button-color-hover;
+    }
+}
+@media(hover:none) {
+    .button_type_secondary:active {
+        background: $button-color-hover;
+        border: 1px solid $button-color-hover;
     }
 }
