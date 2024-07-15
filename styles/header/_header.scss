@@ -1,7 +1,8 @@
 .header {
-    position: relative;
+    // position: relative;
     height: 72px;
     @include flex(flex, initial, center, row);
+    
 
     &__lang {
         margin-left: 24px;

@@ -1,13 +1,29 @@
 .story {
+    @include flex(flex, initial, initial, column);
+    background-color: $background-secondary;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background-image: url('../images/story-back.png');
+    background-repeat: no-repeat;
+    background-position: center 206px;
+
     &__title {
         @include font(20px, 500, 23px);
+        margin-bottom: 24px;
     }
 
     &__name {
         @include font(32px, 700, 42px);
+        margin-bottom: 380px;
+        max-width: 360px;
     }
 
     &__paragraph {
         @include font(16px, 400, 22px);
+        margin-bottom: 16px;
+    }
+
+    &__button {
+        width: 100%;
     }
 }

@@ -1,0 +1,32 @@
+.carousel {
+    position: relative;
+    width: 100%;
+
+    &__container {
+        overflow: hidden;
+    }
+    &__list {
+        display: flex;
+        transition: transform 0.5s ease;    
+    }
+    &__item {
+        flex-shrink: 0;
+        height: 100%;
+    }
+    &__controls {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+// .next {
+//     position: absolute;
+//     top: 240px;
+//     left: 100px;
+//     transform: translateY(-50%);
+// }
+// .prev {
+//     position: absolute;
+//     top: 240px;
+//     transform: translateY(-50%);
+// }

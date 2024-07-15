@@ -49,7 +49,7 @@
 .button {
   font-family: "Gilroy";
   border: 1px solid #9D097C;
-  border-radius: 16px;
+  border-radius: 32px;
   padding: 12px 18px;
   font-size: 16px;
   font-weight: 600;
@@ -113,8 +113,155 @@
   border-radius: 40px;
 }
 
-.header {
+.slider {
+  display: flex;
+  justify-content: initial;
+  align-items: center;
+  flex-direction: column;
+}
+.slider__image-list {
+  display: flex;
+  flex-shrink: 0;
+  margin-bottom: 16px;
+  width: 100%;
+  overflow: hidden;
+}
+.slider__image {
+  min-width: 100%;
+  max-width: 100%;
+  height: 314px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  pointer-events: none;
+}
+.slider__controls {
+  display: flex;
+  justify-content: initial;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 24px;
+  gap: 8px;
+}
+.slider__tab {
+  display: flex;
+  border-radius: 50%;
+}
+.slider__tab_active {
+  padding: 8px;
+  border: 1px solid #9D097C;
+}
+.slider__dot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #32334C;
+}
+.slider__dot_active {
+  transform: scale(2);
+  background-color: #9D097C;
+}
+
+.card_type_business {
+  width: 240px;
+}
+.card_type_business .card__image {
+  width: 100%;
+  height: 260px;
+  margin-bottom: 16px;
+  display: block;
+}
+.card_type_business .card__title {
+  margin-bottom: 12px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+}
+.card_type_business .card__place {
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+}
+.card_type_business .card__about {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+}
+.card_type_study {
+  display: flex;
+  justify-content: space-between;
+  align-items: initial;
+  flex-direction: column;
+  width: 280px;
+  box-sizing: border-box;
+  padding: 24px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+.card_type_study .card__title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  margin-bottom: 8px;
+}
+.card_type_study .card__description {
+  margin-bottom: 18px;
+}
+.card_type_news {
+  width: 260px;
+  height: 280px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 16px;
+  display: flex;
+}
+.card_type_news .card__title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  margin-top: auto;
+}
+
+#news-1 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0) 30%, rgb(0, 0, 0)), url(/images/news-pic-1.png);
+}
+
+#news-2 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0) 30%, rgb(0, 0, 0)), url(/images/news-pic-2.png);
+}
+
+#news-3 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0) 30%, rgb(0, 0, 0)), url(/images/news-pic-3.png);
+}
+
+#news-4 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0) 30%, rgb(0, 0, 0)), url(/images/news-pic-4.png);
+}
+
+.carousel {
   position: relative;
+  width: 100%;
+}
+.carousel__container {
+  overflow: hidden;
+}
+.carousel__list {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+.carousel__item {
+  flex-shrink: 0;
+  height: 100%;
+}
+.carousel__controls {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.header {
   height: 72px;
   display: flex;
   justify-content: initial;
@@ -154,8 +301,8 @@
 .menu__button {
   width: 16px;
   height: 14px;
-  display: inline-flex;
-  transition: opacity 0.4s;
+  display: flex;
+  border: none;
 }
 .menu__button_type_trigger {
   background: url(../images/icons/menu-trigger.svg) center/contain no-repeat;
@@ -173,7 +320,7 @@
   box-sizing: border-box;
   right: 0;
   top: 72px;
-  width: 100%;
+  width: 100vw;
   height: calc(100% - 72px);
   z-index: 10;
   background: #fff;
@@ -250,74 +397,110 @@
 
 .about {
   text-align: center;
+  padding-top: 120px;
+  padding-bottom: 120px;
 }
 .about__description {
   font-size: 24px;
   font-weight: 500;
   line-height: 32px;
+  margin-bottom: 24px;
+}
+.about__button {
+  padding: 30px 0;
+  width: 70%;
 }
 
+.story {
+  display: flex;
+  justify-content: initial;
+  align-items: initial;
+  flex-direction: column;
+  background-color: #C6D9DD;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  background-image: url("../images/story-back.png");
+  background-repeat: no-repeat;
+  background-position: center 206px;
+}
 .story__title {
   font-size: 20px;
   font-weight: 500;
   line-height: 23px;
+  margin-bottom: 24px;
 }
 .story__name {
   font-size: 32px;
   font-weight: 700;
   line-height: 42px;
+  margin-bottom: 380px;
+  max-width: 360px;
 }
 .story__paragraph {
   font-size: 16px;
   font-weight: 400;
   line-height: 22px;
+  margin-bottom: 16px;
+}
+.story__button {
+  width: 100%;
 }
 
-.slider {
+.business {
+  padding-top: 80px;
+}
+.business__title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  margin-bottom: 12px;
+}
+.business__cards {
   display: flex;
   justify-content: initial;
-  align-items: center;
-  flex-direction: column;
+  align-items: initial;
+  flex-direction: row;
+  gap: 24px;
 }
-.slider__image-list {
+
+.study {
+  padding-top: 80px;
+}
+.study__title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  margin-bottom: 12px;
+}
+.study__cards {
   display: flex;
-  margin-bottom: 16px;
-  width: 100%;
-  overflow: hidden;
-  transition: 0.4s ease-in-out;
+  justify-content: initial;
+  align-items: initial;
+  flex-direction: row;
+  gap: 16px;
+  padding: 0 0 32px 16px;
 }
-.slider__image {
-  min-width: 100%;
-  height: 314px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
+
+.news {
+  padding-top: 58px;
 }
-.slider__controls {
+.news__title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  margin-bottom: 12px;
+}
+.news__cards {
+  display: flex;
+  justify-content: initial;
+  align-items: initial;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.footer__links {
   display: flex;
   justify-content: initial;
   align-items: center;
   flex-direction: row;
-  margin-bottom: 24px;
-  gap: 8px;
-}
-.slider__tab {
-  display: flex;
-  border-radius: 50%;
-}
-.slider__tab_active {
-  padding: 8px;
-  border: 1px solid #9D097C;
-}
-.slider__dot {
-  display: inline-block;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background-color: #32334C;
-}
-.slider__dot_active {
-  transform: scale(2);
-  background-color: #9D097C;
 }/*# sourceMappingURL=index.css.map */

@@ -37,51 +37,72 @@ filteredMenuItems.forEach(item => {
     });
 });
 
-//slider
-document.addEventListener('DOMContentLoaded', () => {
-    const slider = document.querySelector('.slider');
-    const images = Array.from(slider.querySelectorAll('.slider__image'));
-    const tabs = Array.from(slider.querySelectorAll('.slider__tab'));
-    let currentIndex = 0;
+// carousel
+document.addEventListener('DOMContentLoaded', function() {
+    const carousels = document.querySelectorAll('.carousel');
 
-    function showImage(index) {
-        images.forEach((img, i) => {
-            img.classList.toggle('slider__image_active', i === index);
-        });
-        tabs.forEach((tab, i) => {
-            tab.classList.toggle('slider__tab_active', i === index);
-            tab.querySelector('.slider__dot').classList.toggle('slider__dot_active', i === index);
-        });
-    }
+    carousels.forEach(carousel => {
+        const carouselList = carousel.querySelector('.carousel__list');
+        const carouselItems = Array.from(carousel.querySelectorAll('.carousel__item'));
+        const carouselControls = carousel.querySelector('.carousel__controls');
+        const prevBtn = carouselControls.querySelector('.prev');
+        const nextBtn = carouselControls.querySelector('.next');
 
-    function nextImage() {
-        currentIndex = (currentIndex + 1) % images.length;
-        showImage(currentIndex);
-    }
+        let currentIndex = 0;
+        const itemWidth = carouselItems[0].clientWidth;
 
-    tabs.forEach((tab, index) => {
-        tab.addEventListener('click', () => {
-            currentIndex = index;
-            showImage(currentIndex);
-        });
-    });
-
-    showImage(currentIndex);
-
-    slider.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-    });
-
-    slider.addEventListener('touchmove', (e) => {
-        endX = e.touches[0].clientX;
-    });
-
-    slider.addEventListener('touchend', () => {
-        if (startX > endX + 50) {
-            nextImage();
-        } else if (startX < endX - 50) {
-            prevImage();
+        function updateCarousel() {
+            const offset = -currentIndex * itemWidth;
+            carouselList.style.transform = `translateX(${offset}px)`;
         }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < carouselItems.length - 1) {
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
+            updateCarousel();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+            } else {
+                currentIndex = carouselItems.length - 1;
+            }
+            updateCarousel();
+        });
+
+        // Swipe functionality
+        carouselList.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+
+        carouselList.addEventListener('touchmove', (e) => {
+            endX = e.touches[0].clientX;
+        });
+
+        carouselList.addEventListener('touchend', () => {
+            if (startX > endX + 50) {
+                // Swipe left
+                if (currentIndex < carouselItems.length - 1) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0;
+                }
+            } else if (startX < endX - 50) {
+                // Swipe right
+                if (currentIndex > 0) {
+                    currentIndex--;
+                } else {
+                    currentIndex = carouselItems.length - 1;
+                }
+            }
+            updateCarousel();
+        });
+
+        updateCarousel();
     });
 });
 

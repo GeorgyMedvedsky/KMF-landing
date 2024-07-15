@@ -17,7 +17,7 @@
             <option value="kaz">Каз</option>
         </select>
         <nav class="menu header__menu">
-            <a href="#" class="menu__button menu__button_type_trigger"></a>
+            <button href="#" class="menu__button menu__button_type_trigger"></button>
             <ul class="menu__list">
                 <li class="menu__list-item">
                     <p class="text text_type_primary menu__title arrow-drop">О портале</p>
@@ -69,13 +69,13 @@
     <main class="main">
         <section class="heading rounded">
             <div class="slider heading__slider">
-                <picture class="slider__image-list">
-                    <img class="slider__image rounded slider__image_active" src="./images/heading-pic-1.jpg" alt="Офис компании">
+                <div class="slider__image-list">
                     <img class="slider__image rounded" src="./images/heading-pic-1.jpg" alt="Офис компании">
+                    <img class="slider__image rounded" src="./images/heading-pic-2.jpg" alt="Офис компании">
                     <img class="slider__image rounded" src="./images/heading-pic-1.jpg" alt="Офис компании">
+                    <img class="slider__image rounded" src="./images/heading-pic-2.jpg" alt="Офис компании">
                     <img class="slider__image rounded" src="./images/heading-pic-1.jpg" alt="Офис компании">
-                    <img class="slider__image rounded" src="./images/heading-pic-1.jpg" alt="Офис компании">
-                </picture>
+                </div>
                 <div class="slider__controls">
                     <div class="slider__tab slider__tab_active"><span class="slider__dot slider__dot_active"></span></div>
                     <div class="slider__tab"><span class="slider__dot"></span></div>
@@ -92,10 +92,11 @@
         </section>
         <section class="about centering">
             <p class="about__description text text_type_special">
-                Друзья! Представляем Вашему вниманию портал KMF Isker hanymy – платформу для получения актуальной и полезной информации для Вас и Вашего бизнеса
+                Друзья! <br> Представляем Вашему вниманию портал KMF Isker hanymy – платформу для получения актуальной и полезной информации для Вас и Вашего бизнеса
             </p>
+            <button class="button button_type_primary about__button">О программе</button>
         </section>
-        <section class="story centering">
+        <section class="story centering rounded">
             <h3 class="story__title text text_type_special">Истории успеха</h2>
             <p class="story__name text text_type_primary">
                 Алимбекова Бакыт - Салон эксклюзивных шляп "Elegant"
@@ -110,13 +111,99 @@
                 индивидуальных шляп, с какими трудностями столкнулась компания
                  в 2020 году и что она планирует на ближайшее будущее.
             </p>
-            <button class="button button_type_secondary">Читать интервью</button>
+            <button class="button button_type_secondary story__button">Читать интервью</button>
         </section>
-        <section class="business"></section>
+        <section class="business centering">
+            <h2 class="business__title text text_type_special">Бизнес</h2>
+            <div class="carousel">
+                <div class="carousel__container">
+                    <ul class="carousel__list business__cards">
+                        <li class="carousel__item card_type_business rounded">
+                            <img src="./images/business-pic-1.png" alt="Услуги для автомобилей 
+                            'Lux-service'" class="card__image rounded">
+                            <h4 class="card__title text text_type_primary">Услуги для автомобилей <br>
+                                "Lux-service"</h4>
+                            <p class="card__place text text_type_primary">Тараз, Абая 291</p>
+                            <p class="card__about text text_type_primary">Ателье для автомобилей "Lux-service" предоставляют пошив чехлов, перетяжка салона, EVA полики и шумоизоляцию.</p>
+                        </li>
+                        <li class="carousel__item card_type_business rounded">
+                            <img src="./images/business-pic-2.jpg" alt="Агробизнес - животноводство, пчеловодство" class="card__image rounded">
+                            <h4 class="card__title text text_type_primary">Агробизнес - животноводство, пчеловодство</h4>
+                            <p class="card__place text text_type_primary">с. Лепси, Алматинская область</p>
+                            <p class="card__about text text_type_primary">Смешанное сельское хозяйство - бизнес, который занимается выращиванием растений (растениеводство) и разведением животных</p>
+                        </li>
+                        <li class="carousel__item card_type_business rounded">
+                            <img src="./images/business-pic-3.jpg" alt="Семейная столовая 'Мерей'
+                            " class="card__image rounded">
+                            <h4 class="card__title text text_type_primary">Семейная столовая "Мерей"
+                            </h4>
+                            <p class="card__place text text_type_primary">Сарканд, Толе би  15/2</p>
+                            <p class="card__about text text_type_primary">В столовой "Мерей" можно насладиться вкуснейшим завтраком или сытным обедом, недорогим полдником и заботливо приготовленным ужином. Рядом...</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="carousel__controls">
+                    <button class="prev">Prev</button>
+                    <button class="next">Next</button>
+                </div>
+            </div>
+        </section>
+        <section class="study">
+            <h2 class="study__title text text_type_special centering">Обучение</h2>
+            <div class="carousel">
+                <div class="carousel__container">
+                    <ul class="carousel__list study__cards">
+                        <li class="carousel__item card card_type_study rounded">
+                            <p class="card__title text text_type_special">Как создать и продвигать бизнес аккаунт в Instagram</p>
+                            <button class="button button_type_secondary">Подробнее</button>
+                        </li>
+                        <li class="carousel__item card card_type_study rounded">
+                            <p class="card__title text text_type_special">Что лучше выбрать – ИП или ТОО</p>
+                            <p class="card__description text text_type_primary">Рабиям Серикбаева, аудитор FinEx Audit Company. 
+                                Налоговый консультант, DipIFR ACCA, юрист</p>
+                            <button class="button button_type_secondary">Подробнее</button>
+                        </li>
+                        <li class="carousel__item card card_type_study rounded">
+                            <p class="card__title text text_type_special">Домашний бюджет и планирование</p>
+                            <p class="card__description text text_type_primary">В этом уроке Вы узнаете, как правильно управлять домашним бюджетом и ставить финансовые цели.</p>
+                            <button class="button button_type_secondary">Подробнее</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="carousel__controls">
+                    <button class="prev">Prev</button>
+                    <button class="next">Next</button>
+                </div>
+            </div>
+        </section>
+        <section class="news centering">
+            <h2 class="news__title text text_type_special">Новости и анонсы</h2>
+        </section>
     </main>
-    <footer class="footer"></footer>
-    <!-- <p class="text text_type_special">fghsbjhdbnj</p>
-    <button class="button button_type_primary">Кнопка</button> -->
+    <footer class="footer">
+        <ul class="footer__links">
+            <li class="footer__link">
+                <a href="#" class="logo">
+                    <img src="./images/logo-3.svg" alt="Логотип компании KMF" class="">
+                </a>
+            </li>
+            <li class="footer__link">
+                <a href="#" class="logo">
+            <img src="./images/logo-2.svg" alt="Логотип компании KMF" class="">
+        </a>
+            </li>
+            <li class="footer__link">
+                
+            </li>
+        </ul>
+        <nav class="footer__nav"></nav>
+    </footer>
     <script src="./index.js"></script>
 </body>
 </html>
+
+<!-- <ul class="news__cards">
+    <li class="card card_type_news rounded" id="news-1">
+        <p class="card__title text text_type_light">Результаты премии "KMF Isker hanymy 2021" ("Бизнес-леди KMF 2021")</p>
+    </li>
+</ul> -->

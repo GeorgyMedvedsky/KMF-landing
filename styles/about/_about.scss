@@ -1,7 +1,15 @@
 .about {
     text-align: center;
+    padding-top: 120px;
+    padding-bottom: 120px;
 
     &__description {
         @include font(24px, 500, 32px);
+        margin-bottom: 24px;
+    }
+
+    &__button {
+        padding: 30px 0;
+        width: 70%;
     }
 }

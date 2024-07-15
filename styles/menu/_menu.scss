@@ -2,8 +2,8 @@
     &__button {
         width: 16px;
         height: 14px;
-        display: inline-flex;
-        transition: opacity .4s;
+        display: flex;
+        border: none;
 
         &_type_trigger {
             background: url(../images/icons/menu-trigger.svg) center / contain no-repeat;
@@ -19,7 +19,7 @@
         box-sizing: border-box;
         right: 0;
         top: 72px;
-        width: 100%;
+        width: 100vw;
         height: calc(100% - 72px);
         z-index: 10;
         background: #fff;

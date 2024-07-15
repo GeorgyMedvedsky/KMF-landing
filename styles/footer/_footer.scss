@@ -1,0 +1,5 @@
+.footer {
+    &__links {
+        @include flex(flex, initial, center, row);
+    }
+}
