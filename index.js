@@ -1,34 +1,86 @@
 //menu
-const menuBtnClasses = {
-    trigger: 'menu__button_type_trigger',
-    close: 'menu__button_type_close'
+const menuClasses = {
+    pageLocked: 'page_locked',
+    triggerBtn: 'menu__button_type_trigger',
+    closeBtn: 'menu__button_type_close',
+    listOpen: 'menu__list_open',
+    drop: '.menu__dropdown-content',
+    dropOpen: 'menu__dropdown-content_open',
+    arrowOpen: 'arrow-drop_open'
 };
+const page = document.querySelector('.page');
 const menuBtn = document.querySelector('.menu__button');
 const menuList = document.querySelector('.menu__list');
-const menuItems = menuList.querySelectorAll('.menu__list-item');
+const menuItems = Array.from(menuList.querySelectorAll('.menu__list-item'));
+const filteredMenuItems = menuItems.filter(item => item.querySelector(menuClasses.drop));
 
-menuBtn.addEventListener('click', () => {
-    if(menuBtn.classList.contains(menuBtnClasses.trigger)) {
-        menuBtn.classList.add(menuBtnClasses.close);
-        menuBtn.classList.remove(menuBtnClasses.trigger);
-        menuList.classList.add('menu__list_open');
-    } else {
-        menuBtn.classList.add(menuBtnClasses.trigger);
-        menuBtn.classList.remove(menuBtnClasses.close);
-        menuList.classList.remove('menu__list_open');
-    }
-})
+function toggleMenu() {
+    menuBtn.classList.toggle(menuClasses.closeBtn);
+    menuBtn.classList.toggle(menuClasses.triggerBtn);
+    menuList.classList.toggle(menuClasses.listOpen);
+    page.classList.toggle(menuClasses.pageLocked);
+}
 
-menuItems.forEach(item => {
+menuBtn.addEventListener('click', toggleMenu);
+
+filteredMenuItems.forEach(item => {
     const title = item.querySelector('.menu__title');
-    const dropdownContent = item.querySelector('.menu__dropdown-content');
+    const dropdownContent = item.querySelector(menuClasses.drop);
     title.addEventListener('click', () => {
-        if(!dropdownContent.classList.contains('menu__dropdown-content_open')) {
-            dropdownContent.classList.add('menu__dropdown-content_open')
-            title.classList.add('arrow-drop_open');
+        if(!dropdownContent.classList.contains(menuClasses.dropOpen)) {
+            dropdownContent.classList.add(menuClasses.dropOpen)
+            title.classList.add(menuClasses.arrowOpen);
         } else {
-            dropdownContent.classList.remove('menu__dropdown-content_open');
-            title.classList.remove('arrow-drop_open');
+            dropdownContent.classList.remove(menuClasses.dropOpen);
+            title.classList.remove(menuClasses.arrowOpen);
+        }
+    });
+});
+
+//slider
+document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.querySelector('.slider');
+    const images = Array.from(slider.querySelectorAll('.slider__image'));
+    const tabs = Array.from(slider.querySelectorAll('.slider__tab'));
+    let currentIndex = 0;
+
+    function showImage(index) {
+        images.forEach((img, i) => {
+            img.classList.toggle('slider__image_active', i === index);
+        });
+        tabs.forEach((tab, i) => {
+            tab.classList.toggle('slider__tab_active', i === index);
+            tab.querySelector('.slider__dot').classList.toggle('slider__dot_active', i === index);
+        });
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+    }
+
+    tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => {
+            currentIndex = index;
+            showImage(currentIndex);
+        });
+    });
+
+    showImage(currentIndex);
+
+    slider.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    });
+
+    slider.addEventListener('touchmove', (e) => {
+        endX = e.touches[0].clientX;
+    });
+
+    slider.addEventListener('touchend', () => {
+        if (startX > endX + 50) {
+            nextImage();
+        } else if (startX < endX - 50) {
+            prevImage();
         }
     });
 });
