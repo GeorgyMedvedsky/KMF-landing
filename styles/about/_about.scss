@@ -1,0 +1,7 @@
+.about {
+    text-align: center;
+
+    &__description {
+        @include font(24px, 500, 32px);
+    }
+}

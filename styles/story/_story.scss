@@ -1,0 +1,13 @@
+.story {
+    &__title {
+        @include font(20px, 500, 23px);
+    }
+
+    &__name {
+        @include font(32px, 700, 42px);
+    }
+
+    &__paragraph {
+        @include font(16px, 400, 22px);
+    }
+}
