@@ -9,15 +9,14 @@
 </head>
 <body class="page">
     <header class="header centering">
-        <a href="./index.html" class="logo">
-            <img src="./images/logo.svg" alt="Логотип компании KMF" class="logo__image_type_main">
+        <a href="./index.html" class="logo logo_size_s">
+            <img src="./images/logo.svg" alt="Логотип компании KMF">
         </a>
         <select name="lang" id="lang" class="header__lang">
             <option value="rus">Rus</option>
             <option value="kaz">Каз</option>
         </select>
         <nav class="menu header__menu">
-            <button href="#" class="menu__button menu__button_type_trigger"></button>
             <ul class="menu__list">
                 <li class="menu__list-item">
                     <p class="text text_type_primary menu__title arrow-drop">О портале</p>
@@ -60,11 +59,14 @@
                 </li>
                 <li class="menu__list-item">
                     <a href="#" class="logo">
-                        <img src="./images/logo-2.svg" alt="Логотип корпоративного фонда" class="logo__image_type_sub">
+                        <img src="./images/logo-2.svg" alt="Логотип корпоративного фонда">
                     </a>
                 </li>
             </ul>
         </nav>
+        <div class="burger">
+            <span class="burger__element"></span>
+        </div>
     </header>
     <main class="main">
         <section class="heading rounded">
@@ -178,13 +180,35 @@
         </section>
         <section class="news centering">
             <h2 class="news__title text text_type_special">Новости и анонсы</h2>
+            <div class="carousel">
+                <div class="carousel__container">
+                    <ul class="carousel__list news__cards">
+                        <li class="carousel__item card card_type_news rounded" id="news-1">
+                            <p class="card__title text text_type_light">Результаты премии "KMF Isker hanymy 2021" ("Бизнес-леди KMF 2021")</p>
+                        </li>
+                        <li class="carousel__item card card_type_news rounded" id="news-2">
+                            <p class="card__title text text_type_light">Международный женский форум</p>
+                        </li>
+                        <li class="carousel__item card card_type_news rounded" id="news-3">
+                            <p class="card__title text text_type_light">Образовательная программа «Мама-предприниматель»</p>
+                        </li>
+                        <li class="carousel__item card card_type_news rounded" id="news-4">
+                            <p class="card__title text text_type_light">Международное совещание Женского форума</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="carousel__controls">
+                    <button class="prev">Prev</button>
+                    <button class="next">Next</button>
+                </div>
+            </div>
         </section>
     </main>
     <footer class="footer">
         <ul class="footer__links">
             <li class="footer__link">
                 <a href="#" class="logo">
-                    <img src="./images/logo-3.svg" alt="Логотип компании KMF" class="">
+                    <img src="./images/logo-3.svg" alt="Логотип компании KMF">
                 </a>
             </li>
             <li class="footer__link">
@@ -201,9 +225,3 @@
     <script src="./index.js"></script>
 </body>
 </html>
-
-<!-- <ul class="news__cards">
-    <li class="card card_type_news rounded" id="news-1">
-        <p class="card__title text text_type_light">Результаты премии "KMF Isker hanymy 2021" ("Бизнес-леди KMF 2021")</p>
-    </li>
-</ul> -->

@@ -1,44 +1,27 @@
 //menu
-const menuClasses = {
-    pageLocked: 'page_locked',
-    triggerBtn: 'menu__button_type_trigger',
-    closeBtn: 'menu__button_type_close',
-    listOpen: 'menu__list_open',
-    drop: '.menu__dropdown-content',
-    dropOpen: 'menu__dropdown-content_open',
-    arrowOpen: 'arrow-drop_open'
-};
 const page = document.querySelector('.page');
-const menuBtn = document.querySelector('.menu__button');
-const menuList = document.querySelector('.menu__list');
-const menuItems = Array.from(menuList.querySelectorAll('.menu__list-item'));
-const filteredMenuItems = menuItems.filter(item => item.querySelector(menuClasses.drop));
+const burgerIcon = document.querySelector('.burger');
+const menu = document.querySelector('.menu__list');
+const menuItems = Array.from(menu.querySelectorAll('.menu__list-item'));
+const filteredMenuItems = menuItems.filter(item => item.querySelector('.menu__dropdown-content'));
 
-function toggleMenu() {
-    menuBtn.classList.toggle(menuClasses.closeBtn);
-    menuBtn.classList.toggle(menuClasses.triggerBtn);
-    menuList.classList.toggle(menuClasses.listOpen);
-    page.classList.toggle(menuClasses.pageLocked);
-}
-
-menuBtn.addEventListener('click', toggleMenu);
+burgerIcon.addEventListener('click', function () {
+    this.classList.toggle('active');
+    menu.classList.toggle('menu__list_open');
+    page.classList.toggle('page_locked');
+});
 
 filteredMenuItems.forEach(item => {
     const title = item.querySelector('.menu__title');
-    const dropdownContent = item.querySelector(menuClasses.drop);
-    title.addEventListener('click', () => {
-        if(!dropdownContent.classList.contains(menuClasses.dropOpen)) {
-            dropdownContent.classList.add(menuClasses.dropOpen)
-            title.classList.add(menuClasses.arrowOpen);
-        } else {
-            dropdownContent.classList.remove(menuClasses.dropOpen);
-            title.classList.remove(menuClasses.arrowOpen);
-        }
+    const dropdownContent = item.querySelector('.menu__dropdown-content');
+    title.addEventListener('click', function () {
+        this.classList.toggle('arrow-drop_open');
+        dropdownContent.classList.toggle('menu__dropdown-content_open');
     });
 });
 
 // carousel
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const carousels = document.querySelectorAll('.carousel');
 
     carousels.forEach(carousel => {

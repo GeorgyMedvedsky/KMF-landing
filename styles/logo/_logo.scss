@@ -1,13 +1,7 @@
 .logo {
     display: inline-flex;
 
-    &__image_type_main {
-        width: 100px;
+    &_size_s {
         height: 32px;
-    }
-
-    &__image_type_sub {
-        width: 50px;
-        height: 52px;
     }
 }

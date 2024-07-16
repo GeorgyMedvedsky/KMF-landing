@@ -1,17 +1,4 @@
 .menu {
-    &__button {
-        width: 16px;
-        height: 14px;
-        display: flex;
-        border: none;
-
-        &_type_trigger {
-            background: url(../images/icons/menu-trigger.svg) center / contain no-repeat;
-        }
-        &_type_close {
-            background: url(../images/icons/menu-close.svg) center / contain no-repeat;
-        }
-    }
     &__list {
         @include flex(flex, initial, center, column);
         position: fixed;
