@@ -1,0 +1,32 @@
+.social {
+    @include flex(flex, initial, center, row);
+    gap: 8px;
+
+    &__icon {
+        // transition: opacity .4s;
+
+        &_type_facebook {
+            width: 16px;
+            height: 17px;
+        }
+        &_type_telegram {
+            width: 16px;
+            height: 13px;
+        }
+        &_type_instagram {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}
+
+// @media (hover:hover) {
+//     .socaial__icon:hover {
+//         opacity: .5;
+//     }
+// }
+// @media (hover:not) {
+//     .social__icon:active {
+//         opacity: .5
+//     }
+// }

@@ -1,5 +1,30 @@
 .footer {
+    background-color: $background-secondary;
+    padding-top: 25px;
+    padding-bottom: 90px;
+
     &__links {
-        @include flex(flex, initial, center, row);
+        @include flex(flex, space-between, center, row);
+    }
+
+    &__menu {
+        margin-top: 32px;
+        @include flex(flex, initial, initial, row);
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    &__list {
+        @include flex(flex, initial, initial, column);
+        gap: 6px;
+        width: 150px;
+    }
+
+    &__title {
+        @include font(16px, 700, 19px);
+    }
+
+    &__link {
+        @include font(14px, 400, 16px);
     }
 }
