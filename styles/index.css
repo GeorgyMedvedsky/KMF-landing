@@ -196,6 +196,7 @@
   align-items: initial;
   flex-direction: column;
   width: 280px;
+  height: 100%;
   box-sizing: border-box;
   padding: 24px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
@@ -226,19 +227,20 @@
 }
 
 #news-1 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0) 30%, rgb(0, 0, 0)), url(/images/news-pic-1.png);
+  background-image: linear-gradient(rgba(0, 0, 0, 0) 30%, rgb(0, 0, 0)), url(../images/news-pic-1.png);
 }
 
 #news-2 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0) 30%, rgb(0, 0, 0)), url(/images/news-pic-2.png);
+  background-image: linear-gradient(rgba(0, 0, 0, 0) 30%, rgb(0, 0, 0)), url(../images/news-pic-2.png);
 }
 
 #news-3 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0) 30%, rgb(0, 0, 0)), url(/images/news-pic-3.png);
+  background-image: linear-gradient(rgba(0, 0, 0, 0) 30%, rgb(0, 0, 0)), url(../images/news-pic-3.png);
+  background-position: right;
 }
 
 #news-4 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0) 30%, rgb(0, 0, 0)), url(/images/news-pic-4.png);
+  background-image: linear-gradient(rgba(0, 0, 0, 0) 30%, rgb(0, 0, 0)), url(../images/news-pic-4.png);
 }
 
 .carousel {

@@ -30,62 +30,67 @@ document.addEventListener('DOMContentLoaded', () => {
         const carouselControls = carousel.querySelector('.carousel__controls');
         const prevBtn = carouselControls.querySelector('.prev');
         const nextBtn = carouselControls.querySelector('.next');
-
+        let startX, startY, endX, endY;
+        
         let currentIndex = 0;
         const itemWidth = carouselItems[0].clientWidth;
 
-        function updateCarousel() {
-            const offset = -currentIndex * itemWidth;
+        function updateCarousel(gap) {
+            const offset = -currentIndex * (itemWidth + gap);
             carouselList.style.transform = `translateX(${offset}px)`;
         }
 
-        nextBtn.addEventListener('click', () => {
-            if (currentIndex < carouselItems.length - 1) {
-                currentIndex++;
-            } else {
-                currentIndex = 0;
-            }
-            updateCarousel();
-        });
+        // nextBtn.addEventListener('click', () => {
+        //     if (currentIndex < carouselItems.length - 1) {
+        //         currentIndex++;
+        //     } else {
+        //         currentIndex = 0;
+        //     }
+        //     updateCarousel();
+        // });
 
-        prevBtn.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-            } else {
-                currentIndex = carouselItems.length - 1;
-            }
-            updateCarousel();
-        });
+        // prevBtn.addEventListener('click', () => {
+        //     if (currentIndex > 0) {
+        //         currentIndex--;
+        //     } else {
+            //         currentIndex = carouselItems.length - 1;
+        //     }
+        //     updateCarousel();
+        // });
 
-        // Swipe functionality
         carouselList.addEventListener('touchstart', (e) => {
             startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
         });
 
         carouselList.addEventListener('touchmove', (e) => {
             endX = e.touches[0].clientX;
+            endY = e.touches[0].clientY;
+
+            if (Math.abs(startX - endX) > Math.abs(startY - endY)) {
+                e.preventDefault();
+            }
         });
 
         carouselList.addEventListener('touchend', () => {
             if (startX > endX + 50) {
-                // Swipe left
                 if (currentIndex < carouselItems.length - 1) {
                     currentIndex++;
                 } else {
                     currentIndex = 0;
                 }
             } else if (startX < endX - 50) {
-                // Swipe right
                 if (currentIndex > 0) {
                     currentIndex--;
                 } else {
                     currentIndex = carouselItems.length - 1;
                 }
             }
-            updateCarousel();
+            updateCarousel(16);
         });
 
         updateCarousel();
     });
 });
+
 
