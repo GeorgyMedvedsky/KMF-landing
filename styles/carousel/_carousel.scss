@@ -4,6 +4,7 @@
 
     &__container {
         overflow: hidden;
+        margin-bottom: 16px;
     }
     &__list {
         display: flex;
@@ -13,7 +14,56 @@
         flex-shrink: 0;
     }
     &__controls {
-        opacity: 0;
-        visibility: hidden;
+        @include flex(flex, center, center, row);
+        gap: 8px;
+    }
+    &__tabs {
+        @include flex(flex, initial, center, row);
+        gap: 8px;
+    }
+    &__tab {
+        display: flex;
+        border-radius: 50%;
+
+        &_active {
+            padding: 8px;
+            border: 1px solid $slider-tab-color-active;
+        }
+    }
+    &__dot {
+        display: inline-block;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: $slider-tab-color-primary;
+
+        &_active {
+            transform: scale(2);
+            background-color: $slider-tab-color-active;
+        }
+    }
+}
+
+#carousel-for-heading {
+    & .carousel__controls {
+        display: flex;
+        & .prev, & .next {
+            display: none;
+        }
+    }
+}
+#carousel-for-business {
+    & .carousel__controls {
+        display: none;
+    }
+}
+#carousel-for-study {
+    & .carousel__controls {
+        display: none;
+    }
+}
+#carousel-for-news {
+    & .carousel__controls {
+        display: none;
     }
 }

@@ -9,41 +9,5 @@
         overflow: hidden;
     }
 
-    &__image {
-        min-width: 100%;
-        max-width: 100%;
-        height: 314px;
-        object-fit: cover;
-        object-position: center;
-        pointer-events: none
-    }
-
-    &__controls {
-        @include flex(flex, initial, center, row);
-        margin-bottom: 24px;
-        gap: 8px;
-    }
-
-    &__tab {
-        display: flex;
-        border-radius: 50%;
-
-        &_active {
-            padding: 8px;
-            border: 1px solid $slider-tab-color-active;
-        }
-    }
-
-    &__dot {
-        display: inline-block;
-        width: 4px;
-        height: 4px;
-        border-radius: 50%;
-        background-color: $slider-tab-color-primary;
-
-        &_active {
-            transform: scale(2);
-            background-color: $slider-tab-color-active;
-        }
-    }
+    
 }

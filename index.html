@@ -70,22 +70,28 @@
     </header>
     <main class="main">
         <section class="heading rounded">
-            <div class="slider heading__slider">
-                <div class="slider__image-list">
-                    <img class="slider__image rounded" src="./images/heading-pic-1.jpg" alt="Офис компании">
-                    <img class="slider__image rounded" src="./images/heading-pic-2.jpg" alt="Офис компании">
-                    <img class="slider__image rounded" src="./images/heading-pic-1.jpg" alt="Офис компании">
-                    <img class="slider__image rounded" src="./images/heading-pic-2.jpg" alt="Офис компании">
-                    <img class="slider__image rounded" src="./images/heading-pic-1.jpg" alt="Офис компании">
+            <div class="carousel" id="carousel-for-heading">
+                <div class="carousel__container">
+                    <ul class="carousel__list news__cards">
+                        <li class="carousel__item">
+                            <img class="heading__image rounded" src="./images/heading-pic-1.jpg" alt="Офис компании">
+                        </li>
+                        <li class="carousel__item">
+                            <img class="heading__image rounded" src="./images/heading-pic-1.jpg" alt="Офис компании">
+                        </li>
+                        <li class="carousel__item">
+                            <img class="heading__image rounded" src="./images/heading-pic-1.jpg" alt="Офис компании">
+                        </li>
+                        <li class="carousel__item">
+                            <img class="heading__image rounded" src="./images/heading-pic-1.jpg" alt="Офис компании">
+                        </li>
+                    </ul>
                 </div>
-                <div class="slider__controls">
-                    <div class="slider__tab slider__tab_active"><span class="slider__dot slider__dot_active"></span></div>
-                    <div class="slider__tab"><span class="slider__dot"></span></div>
-                    <div class="slider__tab"><span class="slider__dot"></span></div>
-                    <div class="slider__tab"><span class="slider__dot"></span></div>
-                    <div class="slider__tab"><span class="slider__dot"></span></div>
+                <div class="carousel__controls">
+                    <button class="prev">prev</button>
+                    <ul class="carousel__tabs"></ul>
+                    <button class="next">next</button>
                 </div>
-            </div>
             <div class="heading__content centering">
                 <h1 class="heading__title text text_type_primary">KMF <br> и Фонд KMF-Демеу</h1>
                 <p class="heading__subtitle text text_type_secondary">Для нас важно поддерживать социальное предпринимательство</p>
@@ -123,7 +129,7 @@
         </article>
         <section class="business centering">
             <h2 class="business__title text text_type_special">Бизнес</h2>
-            <div class="carousel">
+            <div class="carousel" id="carousel-for-business">
                 <div class="carousel__container">
                     <ul class="carousel__list business__cards">
                         <li class="carousel__item">
@@ -157,14 +163,15 @@
                     </ul>
                 </div>
                 <div class="carousel__controls">
-                    <button class="prev">Prev</button>
-                    <button class="next">Next</button>
+                    <button class="prev">prev</button>
+                    <ul class="carousel__tabs"></ul>
+                    <button class="next">next</button>
                 </div>
             </div>
         </section>
         <section class="study">
             <h2 class="study__title text text_type_special centering">Обучение</h2>
-            <div class="carousel">
+            <div class="carousel" id="carousel-for-study">
                 <div class="carousel__container">
                     <ul class="carousel__list study__cards">
                         <li class="carousel__item">
@@ -197,14 +204,15 @@
                     </ul>
                 </div>
                 <div class="carousel__controls">
-                    <button class="prev">Prev</button>
-                    <button class="next">Next</button>
+                    <button class="prev">prev</button>
+                    <ul class="carousel__tabs"></ul>
+                    <button class="next">next</button>
                 </div>
             </div>
         </section>
         <section class="news centering">
             <h2 class="news__title text text_type_special">Новости и анонсы</h2>
-            <div class="carousel">
+            <div class="carousel" id="carousel-for-news">
                 <div class="carousel__container">
                     <ul class="carousel__list news__cards">
                         <li class="carousel__item">
@@ -238,8 +246,9 @@
                     </ul>
                 </div>
                 <div class="carousel__controls">
-                    <button class="prev">Prev</button>
-                    <button class="next">Next</button>
+                    <button class="prev">prev</button>
+                    <ul class="carousel__tabs"></ul>
+                    <button class="next">next</button>
                 </div>
             </div>
         </section>
@@ -306,5 +315,9 @@
         </nav>
     </footer>
     <script src="./index.js"></script>
+
+    <template id="tab-template">
+        <li class="carousel__tab"><span class="carousel__dot"></span></li>
+    </template>
 </body>
 </html>
