@@ -1,22 +1,41 @@
+// const links = Array.from(document.getElementsByTagName('a'));
+// links.forEach(link => {
+//     link.addEventListener('mousedown', evt => {
+//         evt.preventDefault();
+//     });
+// });
+
+
 //menu
-const page = document.querySelector('.page');
-const burgerIcon = document.querySelector('.burger');
-const menu = document.querySelector('.menu__list');
-const menuItems = Array.from(menu.querySelectorAll('.menu__list-item'));
-const filteredMenuItems = menuItems.filter(item => item.querySelector('.menu__dropdown-content'));
+const menuClasses = {
+    PAGE: 'page',
+    PAGE_LOCKED: 'page_locked',
+    BURGER_ICON: 'burger',
+    BURGER_ICON_ACTIVE: 'active',
+    MENU_LIST: 'menu__list',
+    MENU_LIST_OPEN: 'menu__list_open',
+    MENU_ITEM: 'menu__list-item',
+    MENU_TITLE: 'menu__title',
+    DROPDOWN_CONTENT: 'menu__dropdown-content',
+    DROPDOWN_CONTENT_OPEN: 'menu__dropdown-content_open'
+};
+const page = document.querySelector(`.${menuClasses.PAGE}`);
+const burgerIcon = document.querySelector(`.${menuClasses.BURGER_ICON}`);
+const menu = document.querySelector(`.${menuClasses.MENU_LIST}`);
+const menuItems = Array.from(menu.querySelectorAll(`.${menuClasses.MENU_ITEM}:has(.${menuClasses.DROPDOWN_CONTENT})`));
 
 burgerIcon.addEventListener('click', function () {
-    this.classList.toggle('active');
-    menu.classList.toggle('menu__list_open');
-    page.classList.toggle('page_locked');
+    this.classList.toggle(menuClasses.BURGER_ICON_ACTIVE);
+    menu.classList.toggle(menuClasses.MENU_LIST_OPEN);
+    page.classList.toggle(menuClasses.PAGE_LOCKED);
 });
 
-filteredMenuItems.forEach(item => {
-    const title = item.querySelector('.menu__title');
-    const dropdownContent = item.querySelector('.menu__dropdown-content');
+menuItems.forEach(item => {
+    const title = item.querySelector(`.${menuClasses.MENU_TITLE}`);
+    const dropdownContent = item.querySelector(`.${menuClasses.DROPDOWN_CONTENT}`);
     title.addEventListener('click', function () {
         this.classList.toggle('arrow-drop_open');
-        dropdownContent.classList.toggle('menu__dropdown-content_open');
+        dropdownContent.classList.toggle(menuClasses.DROPDOWN_CONTENT_OPEN);
     });
 });
 

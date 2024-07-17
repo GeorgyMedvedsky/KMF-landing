@@ -210,6 +210,12 @@
 .card_type_study .card__description {
   margin-bottom: 18px;
 }
+.card_type_study .card__link {
+  display: flex;
+}
+.card_type_study .card__button {
+  width: 100%;
+}
 .card_type_news {
   width: 260px;
   height: 280px;
@@ -495,7 +501,6 @@
   font-size: 24px;
   font-weight: 700;
   line-height: 32px;
-  margin-bottom: 12px;
 }
 .study__cards {
   display: flex;
@@ -503,11 +508,11 @@
   align-items: initial;
   flex-direction: row;
   gap: 16px;
-  padding: 0 0 32px 16px;
+  padding: 22px 0 40px 16px;
 }
 
 .news {
-  padding-top: 58px;
+  padding-top: 40px;
 }
 .news__title {
   font-size: 24px;
