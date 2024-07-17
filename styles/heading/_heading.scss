@@ -2,6 +2,13 @@
     background-color: $background-secondary;
     padding-bottom: 36px;
 
+    &__image-list {
+        flex-shrink: 0;
+        margin-bottom: 16px;
+        width: 100%;
+        overflow: hidden;
+    }
+
     &__image {
         min-width: 100%;
         max-width: 100%;
