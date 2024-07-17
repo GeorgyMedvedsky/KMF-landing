@@ -1,9 +1,9 @@
-// const links = Array.from(document.getElementsByTagName('a'));
-// links.forEach(link => {
-//     link.addEventListener('mousedown', evt => {
-//         evt.preventDefault();
-//     });
-// });
+const links = Array.from(document.getElementsByTagName('a'));
+links.forEach(link => {
+    link.addEventListener('click', evt => {
+        evt.preventDefault();
+    });
+});
 
 
 //menu
