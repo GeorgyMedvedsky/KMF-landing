@@ -6,12 +6,11 @@
         flex-shrink: 0;
         margin-bottom: 16px;
         width: 100%;
-        overflow: hidden;
     }
 
     &__image {
-        min-width: 100%;
-        max-width: 100%;
+        width: 100vw;
+        min-width: 360px;
         height: 314px;
         object-fit: cover;
         object-position: center;

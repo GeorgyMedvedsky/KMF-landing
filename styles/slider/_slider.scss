@@ -1,4 +1,4 @@
-.carousel {
+.slider {
     position: relative;
     width: 100%;
 
@@ -44,26 +44,26 @@
     }
 }
 
-#carousel-for-heading {
-    & .carousel__controls {
+#slider-for-heading {
+    & .slider__controls {
         display: flex;
         & .prev, & .next {
             display: none;
         }
     }
 }
-#carousel-for-business {
-    & .carousel__controls {
+#slider-for-business {
+    & .slider__controls {
         display: none;
     }
 }
-#carousel-for-study {
-    & .carousel__controls {
+#slider-for-study {
+    & .slider__controls {
         display: none;
     }
 }
-#carousel-for-news {
-    & .carousel__controls {
+#slider-for-news {
+    & .slider__controls {
         display: none;
     }
 }

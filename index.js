@@ -41,73 +41,71 @@ function setMenuFunctionality() {
     });
 }
 
-function setCarouselFunctionality() {
+function setsliderFunctionality() {
     document.addEventListener('DOMContentLoaded', () => {
         const classes = {
-            CAROUSEL: 'carousel',
-            CAROUSEL_LIST: 'carousel__list',
-            CAROUSEL_ITEM: 'carousel__item',
-            CAROUSEL_CONTROLS: 'carousel__controls',
-            CAROUSEL_TABS: 'carousel__tabs',
-            CAROUSEL_TAB: 'carousel__tab',
-            CAROUSEL_TAB_ACTIVE: 'carousel__tab_active',
-            CAROUSEL_DOT: 'carousel__dot',
-            CAROUSEL_DOT_ACTIVE: 'carousel__dot_active'
+            SLIDER: 'slider',
+            SLIDER_LIST: 'slider__list',
+            SLIDER_ITEM: 'slider__item',
+            SLIDER_CONTROLS: 'slider__controls',
+            SLIDER_TABS: 'slider__tabs',
+            SLIDER_TAB: 'slider__tab',
+            SLIDER_TAB_ACTIVE: 'slider__tab_active',
+            SLIDER_DOT: 'slider__dot',
+            SLIDER_DOT_ACTIVE: 'slider__dot_active'
         };
-        const carousels = document.querySelectorAll(`.${classes.CAROUSEL}`);
+        const sliders = document.querySelectorAll(`.${classes.SLIDER}`);
     
-        carousels.forEach(carousel => {
+        sliders.forEach(slider => {
             const tabTemplate = document.querySelector('#tab-template').content;
-            const carouselList = carousel.querySelector(`.${classes.CAROUSEL_LIST}`);
-            const carouselItems = Array.from(carousel.querySelectorAll(`.${classes.CAROUSEL_ITEM}`));
-            const carouselControls = carousel.querySelector(`.${classes.CAROUSEL_CONTROLS}`);
-            const tabList = carouselControls.querySelector(`.${classes.CAROUSEL_TABS}`);
-            const prevBtn = carouselControls.querySelector('.prev');
-            const nextBtn = carouselControls.querySelector('.next');
+            const sliderList = slider.querySelector(`.${classes.SLIDER_LIST}`);
+            const sliderItems = Array.from(slider.querySelectorAll(`.${classes.SLIDER_ITEM}`));
+            const sliderControls = slider.querySelector(`.${classes.SLIDER_CONTROLS}`);
+            const tabList = sliderControls.querySelector(`.${classes.SLIDER_TABS}`);
+            const prevBtn = sliderControls.querySelector('.prev');
+            const nextBtn = sliderControls.querySelector('.next');
             let startX, startY, endX, endY;
             let currentIndex = 0;
-            const itemWidth = carouselItems[0].clientWidth;
-            const itemWidthForHeader = (carouselList.offsetWidth * (100 / 100));
 
-            createTabs(carouselItems.length);
+            createTabs(sliderItems.length);
 
-            const tabs = Array.from(tabList.querySelectorAll(`.${classes.CAROUSEL_TAB}`));
-            const dots = Array.from(tabList.querySelectorAll(`.${classes.CAROUSEL_DOT}`));
+            const tabs = Array.from(tabList.querySelectorAll(`.${classes.SLIDER_TAB}`));
+            const dots = Array.from(tabList.querySelectorAll(`.${classes.SLIDER_DOT}`));
     
             function createTabs(length) {
                 for(let i = 0; i < length; i++) {
-                    const tab = tabTemplate.querySelector(`.${classes.CAROUSEL_TAB}`).cloneNode(true);
+                    const tab = tabTemplate.querySelector(`.${classes.SLIDER_TAB}`).cloneNode(true);
                     tabList.append(tab);
                 }
             }
 
-            function updateCarousel(gap = 16) {
-                const offset = carousel.id !== 'carousel-for-heading'
-                    ? -currentIndex * (itemWidth + gap)
-                    : -currentIndex * (itemWidthForHeader + gap);
-                carouselList.style.transform = `translateX(${offset}px)`;
-                tabs.forEach(tab => tab.classList.remove(classes.CAROUSEL_TAB_ACTIVE));
-                dots.forEach(dot => dot.classList.remove(classes.CAROUSEL_DOT_ACTIVE));
-                tabs[currentIndex].classList.add(classes.CAROUSEL_TAB_ACTIVE);
-                dots[currentIndex].classList.add(classes.CAROUSEL_DOT_ACTIVE);
+            function updateslider(gap = 16) {
+                const offset = slider.id !== 'slider-for-heading'
+                    ? -currentIndex * (sliderItems[0].clientWidth + gap)
+                    : -currentIndex * (sliderList.offsetWidth * (100 / 100));
+                sliderList.style.transform = `translateX(${offset}px)`;
+                tabs.forEach(tab => tab.classList.remove(classes.SLIDER_TAB_ACTIVE));
+                dots.forEach(dot => dot.classList.remove(classes.SLIDER_DOT_ACTIVE));
+                tabs[currentIndex].classList.add(classes.SLIDER_TAB_ACTIVE);
+                dots[currentIndex].classList.add(classes.SLIDER_DOT_ACTIVE);
             }
 
             nextBtn.addEventListener('click', () => {
-                if (currentIndex < carouselItems.length - 1) currentIndex++;
-                updateCarousel();
+                if (currentIndex < sliderItems.length - 1) currentIndex++;
+                updateslider();
             });
     
             prevBtn.addEventListener('click', () => {
                 if (currentIndex > 0) currentIndex--;
-                updateCarousel();
+                updateslider();
             });
     
-            carouselList.addEventListener('touchstart', (e) => {
+            sliderList.addEventListener('touchstart', (e) => {
                 startX = e.touches[0].clientX;
                 startY = e.touches[0].clientY;
             });
     
-            carouselList.addEventListener('touchmove', (e) => {
+            sliderList.addEventListener('touchmove', (e) => {
                 endX = e.touches[0].clientX;
                 endY = e.touches[0].clientY;
     
@@ -116,22 +114,22 @@ function setCarouselFunctionality() {
                 }
             });
     
-            carouselList.addEventListener('touchend', () => {
+            sliderList.addEventListener('touchend', () => {
                 // FIXME: исправить баг перелистывания при простом тапе по элементу
                 if (Math.abs(startX - endX) > 50) {
                     if (startX > endX + 50) {
-                        if (currentIndex < carouselItems.length - 1) currentIndex++;
+                        if (currentIndex < sliderItems.length - 1) currentIndex++;
                     } else if (startX < endX - 50) {
                         if (currentIndex > 0) currentIndex--;
                     }
-                    updateCarousel();
+                    updateslider();
                 }
             });    
-            updateCarousel();
+            updateslider();
         });
     });
 }
 
 resetDefaultBehaviorForLinks();
 setMenuFunctionality();
-setCarouselFunctionality();
+setsliderFunctionality();
