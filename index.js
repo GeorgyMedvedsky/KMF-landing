@@ -38,6 +38,7 @@ function setMenuFunctionality() {
             menuItems.forEach(otherItem => {
                 if (otherItem !== item) {
                     otherItem.querySelector(`.${classes.DROPDOWN_CONTENT}`).classList.remove(classes.DROPDOWN_CONTENT_OPEN);
+                    otherItem.querySelector(`.${classes.MENU_TITLE}`).classList.remove('arrow-drop_open')
                 }
             });
             this.classList.toggle('arrow-drop_open');
@@ -46,7 +47,7 @@ function setMenuFunctionality() {
     });
 }
 
-function setsliderFunctionality() {
+function setSliderFunctionality() {
     document.addEventListener('DOMContentLoaded', () => {
         const classes = {
             SLIDER: 'slider',
@@ -86,9 +87,10 @@ function setsliderFunctionality() {
             }
 
             function updateSlider(gap = 16) {
+                const maxOffset = sliderList.offsetWidth - slider.offsetWidth;
                 const offset = slider.id !== 'slider-for-heading'
-                    ? -currentIndex * (sliderItems[0].clientWidth + gap)
-                    : -currentIndex * (sliderList.offsetWidth * (100 / 100));
+                    ? Math.min(-currentIndex * (sliderItems[0].clientWidth + gap), maxOffset)
+                    : Math.min(-currentIndex * (sliderList.offsetWidth * (100 / 100)), maxOffset);
                 sliderList.style.transform = `translateX(${offset}px)`;
                 tabs.forEach(tab => tab.classList.remove(classes.SLIDER_TAB_ACTIVE));
                 dots.forEach(dot => dot.classList.remove(classes.SLIDER_DOT_ACTIVE));
@@ -146,4 +148,4 @@ function setsliderFunctionality() {
 
 resetDefaultBehaviorForLinks();
 setMenuFunctionality();
-setsliderFunctionality();
+setSliderFunctionality();
