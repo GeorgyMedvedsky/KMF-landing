@@ -27,12 +27,26 @@
 
     &__link {
         @include font(14px, 400, 16px);
+        transition: .4s;
 
         &:has(.social) {
             margin-left: auto;
         }
     }
 }
+
+@media (hover:hover) {
+    .footer__link:hover {
+        cursor: pointer;
+        color: $font_color-hover;
+    }
+ }
+ 
+ @media (hover:not()) {
+    .footer__link:active {
+        color: $font_color-hover;
+    }
+ }
 
 @media screen and (min-width: $res-laptop) {
     .footer {

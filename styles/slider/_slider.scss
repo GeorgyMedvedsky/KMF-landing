@@ -152,6 +152,8 @@
     }
 
     #slider-for-study {
+        max-width: 1280px;
+        
         & .slider__controls {
             display: flex;
             margin-top: 32px;
