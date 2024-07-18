@@ -1,5 +1,4 @@
 .slider {
-    position: relative;
     width: 100%;
 
     &__container {
@@ -44,6 +43,7 @@
     }
 }
 
+// controls visibility
 #slider-for-heading {
     & .slider__controls {
         display: flex;
@@ -65,5 +65,54 @@
 #slider-for-news {
     & .slider__controls {
         display: none;
+    }
+}
+
+@media screen and (min-width: $res-laptop) {
+    #slider-for-heading {
+        width: 50%;
+        height: 742px;
+        & .slider__container {
+            margin: 0;
+            height: 100%;
+        }
+        & .slider__list {
+            margin: 0;
+            height: 100%;
+        }
+        & .slider__item {
+            width: 100%;
+        }
+
+        & .slider__controls {
+            position: absolute;
+            bottom: 50px;
+            left: 40px;
+            & .prev, & .next {
+                display: flex;
+                background-color: #fff;
+                border: none;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                background: #fff url(/images/icons/arrow-left.svg) no-repeat center / 20px ;
+                transition: .3s;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+            & .prev {
+                transform: rotate(0deg);
+                &:hover {
+                    transform: rotate(0deg) scale(1.2);
+                }
+            }
+            & .next {
+                transform: rotate(180deg);
+                &:hover {
+                    transform: rotate(180deg) scale(1.2);
+                }
+            }
+        }
     }
 }

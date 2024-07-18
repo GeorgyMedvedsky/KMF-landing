@@ -1,6 +1,5 @@
 .heading {
     background-color: $background-secondary;
-    padding-bottom: 36px;
 
     &__image-list {
         flex-shrink: 0;
@@ -9,13 +8,13 @@
     }
 
     &__image {
-        width: 100vw;
+        width: 100%;
         min-width: 360px;
         height: 314px;
         object-fit: cover;
         object-position: center;
         pointer-events: none;
-        display: block;
+        display: flex;
     }
 
     &__title {
@@ -32,5 +31,31 @@
     &__button {
         padding: 30px 0;
         width: 100%;
+        margin-bottom: 36px;
+    }
+}
+
+@media screen and (min-width: $res-laptop) {
+    .heading {
+        @include flex(flex, initial, center, row-reverse);
+        position: relative;
+        min-height: 742px;
+        box-sizing: border-box;
+
+        &__image {
+            height: 100%;
+        }
+
+        &__title {
+            @include font(64px, 600, 80px);
+        }
+
+        &__subtitle {
+            @include font(24px, 400, 32px);
+        }
+
+        &__button {
+            width: 240px;
+        }
     }
 }
