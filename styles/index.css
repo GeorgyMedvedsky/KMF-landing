@@ -291,7 +291,7 @@
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  background: #fff url(/images/icons/arrow-left.svg) no-repeat center/20px;
+  background: #fff url(../images/icons/arrow-left.svg) no-repeat center/20px;
   transition: 0.3s;
   cursor: pointer;
 }
@@ -400,6 +400,52 @@
   }
   #slider-for-news .slider__controls .prev, #slider-for-news .slider__controls .next {
     background-color: #FFF0F5;
+  }
+}
+.burger {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+  width: 16px;
+  height: 14px;
+  z-index: 50;
+}
+.burger::before, .burger::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: #32334C;
+  position: absolute;
+  transition: all 0.2s ease-in;
+}
+.burger::before {
+  top: 0;
+}
+.burger::after {
+  bottom: 0;
+}
+.burger__element {
+  width: 100%;
+  height: 2px;
+  background-color: #32334C;
+}
+.burger.active .burger__element {
+  transform: scale(0);
+}
+.burger.active::before {
+  top: 50%;
+  transform: rotate(-45deg) translate(0, -50%);
+}
+.burger.active::after {
+  bottom: 50%;
+  transform: rotate(45deg) translate(0, 50%);
+}
+
+@media screen and (min-width: 1024px) {
+  .burger {
+    display: none;
   }
 }
 .header {
@@ -563,52 +609,6 @@
     cursor: pointer;
   }
 }
-.burger {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  flex-direction: row;
-  position: relative;
-  width: 16px;
-  height: 14px;
-  z-index: 50;
-}
-.burger::before, .burger::after {
-  content: "";
-  width: 100%;
-  height: 2px;
-  background-color: #32334C;
-  position: absolute;
-  transition: all 0.2s ease-in;
-}
-.burger::before {
-  top: 0;
-}
-.burger::after {
-  bottom: 0;
-}
-.burger__element {
-  width: 100%;
-  height: 2px;
-  background-color: #32334C;
-}
-.burger.active .burger__element {
-  transform: scale(0);
-}
-.burger.active::before {
-  top: 50%;
-  transform: rotate(-45deg) translate(0, -50%);
-}
-.burger.active::after {
-  bottom: 50%;
-  transform: rotate(45deg) translate(0, 50%);
-}
-
-@media screen and (min-width: 1024px) {
-  .burger {
-    display: none;
-  }
-}
 .heading {
   background-color: #C6D9DD;
 }
@@ -728,7 +728,7 @@
 .story__image-content {
   height: 350px;
   max-height: 400px;
-  background: url(/images/story-back.png) no-repeat center/cover;
+  background: url(../images/story-back.png) no-repeat center/cover;
   order: 3;
   margin-bottom: 16px;
 }

@@ -1,3 +1,4 @@
+// components
 @import './page/page';
 @import './text/text';
 @import './button/button';
@@ -6,11 +7,12 @@
 @import './rounded/rounded';
 @import './card/card';
 @import './slider/slider';
+@import './burger/burger';
 
+// global
 @import './header/header';
 @import './logo/logo';
 @import './menu/menu';
-@import './burger/burger';
 @import './heading/heading';
 @import './about/about';
 @import './story/story';
