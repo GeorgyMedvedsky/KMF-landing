@@ -66,6 +66,7 @@ function setsliderFunctionality() {
             const nextBtn = sliderControls.querySelector('.next');
             let startX, startY, endX, endY;
             let currentIndex = 0;
+            let isHorizontalSwipe = false;
 
             createTabs(sliderItems.length);
 
@@ -79,7 +80,7 @@ function setsliderFunctionality() {
                 }
             }
 
-            function updateslider(gap = 16) {
+            function updateSlider(gap = 16) {
                 const offset = slider.id !== 'slider-for-heading'
                     ? -currentIndex * (sliderItems[0].clientWidth + gap)
                     : -currentIndex * (sliderList.offsetWidth * (100 / 100));
@@ -92,17 +93,20 @@ function setsliderFunctionality() {
 
             nextBtn.addEventListener('click', () => {
                 if (currentIndex < sliderItems.length - 1) currentIndex++;
-                updateslider();
+                updateSlider();
             });
     
             prevBtn.addEventListener('click', () => {
                 if (currentIndex > 0) currentIndex--;
-                updateslider();
+                updateSlider();
             });
     
             sliderList.addEventListener('touchstart', (e) => {
                 startX = e.touches[0].clientX;
                 startY = e.touches[0].clientY;
+            }, {
+                passive: true,
+                touchAction: 'pan-x'
             });
     
             sliderList.addEventListener('touchmove', (e) => {
@@ -111,21 +115,26 @@ function setsliderFunctionality() {
     
                 if (Math.abs(startX - endX) > Math.abs(startY - endY)) {
                     e.preventDefault();
+                    isHorizontalSwipe = true;
+                } else {
+                    isHorizontalSwipe = false;
                 }
             });
     
             sliderList.addEventListener('touchend', () => {
-                // FIXME: исправить баг перелистывания при простом тапе по элементу
-                if (Math.abs(startX - endX) > 50) {
+                if (isHorizontalSwipe && Math.abs(startX - endX) > 80) {
                     if (startX > endX + 50) {
                         if (currentIndex < sliderItems.length - 1) currentIndex++;
                     } else if (startX < endX - 50) {
                         if (currentIndex > 0) currentIndex--;
                     }
-                    updateslider();
+                    updateSlider();
                 }
-            });    
-            updateslider();
+                isHorizontalSwipe = false;
+            }, { passive: true });    
+            updateSlider();
+
+            
         });
     });
 }
