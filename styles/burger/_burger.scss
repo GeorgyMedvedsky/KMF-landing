@@ -36,3 +36,9 @@
         transform: rotate(45deg) translate(0, 50%);
     }
 }
+
+@media screen and (min-width: $res-laptop) {
+    .burger {
+        display: none;
+    }
+}

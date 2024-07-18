@@ -1,3 +1,14 @@
 .centering {
     padding: 0 16px;
 }
+
+@media screen and (min-width: $res-laptop) {
+    .centering {
+        padding: 0 40px;
+    }
+}
+@media screen and (min-width: $res-desktop) {
+    .centering {
+        padding: 0 calc((50% - 640px));
+    }
+}

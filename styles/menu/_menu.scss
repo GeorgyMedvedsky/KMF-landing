@@ -6,13 +6,14 @@
         box-sizing: border-box;
         right: 0;
         top: 72px;
-        width: 100vw;
+        width: 100%;
         height: calc(100% - 72px);
         z-index: 10;
         background: #fff;
         overflow: scroll;
         transform: translate(100%);
         transition: transform .4s ease;
+        gap: 40px;
         &_open{
             transform: translate(0);
         }
@@ -20,18 +21,19 @@
     &__list-item {
         transition: .4s;
         @include flex(flex, initial, center, column);
-        &:not(:last-of-type) {
-            margin-bottom: 40px;
-        }
     }
     &__title {
         @include font(20px, 600, 24px);
+        transition: .4s;
+    }
+    &__subtitle {
+        display: none;
     }
     &__dropdown-content {
         @include flex(flex, initial, center, column);
         @include visible(0, hidden);
         height: 0;
-        transition: .4s;
+        transition: .2s;
         &_open {
             gap: 20px;
             margin-top: 20px;
@@ -49,5 +51,50 @@
 @media (hover:none) {
     .menu__button:active {
         opacity: .5;
+    }
+}
+
+@media screen and (min-width: $res-laptop) {
+    .menu {
+        &__list {
+            position: static;
+            transform: none;
+            flex-direction: row;
+            gap: 20px;
+            overflow: visible;
+        }
+        &__list-item {
+            position: relative;
+        }
+        &__title {
+            @include font(16px, 600, 19px);
+            &:hover {
+                color: $font_color-hover;
+                cursor: pointer;
+            }
+        }
+        &__subtitle {
+            display: inline-block;
+            @include font(12px, 400, 18px);
+        }
+        &__dropdown-content {
+            position: absolute;
+            background-color: #fff;
+            padding: 32px;
+            min-width: 330px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.14);
+            z-index: 100;
+            top: 25px;
+            @include flex(flex, initial, flex-start, column);
+        }
+        &__dropdown-item .text {
+            @include font(16px, 600, 22px);
+            color: #1C1C1E;
+            transition: .4s;
+            &:hover {
+                color: $font_color-hover;
+                cursor: pointer;
+            }
+        }
     }
 }

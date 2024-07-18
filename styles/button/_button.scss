@@ -8,6 +8,9 @@
     padding: 12px 18px;
     @include font(16px, 600, 19px);
     transition: .4s;
+    &:hover {
+        cursor: pointer;
+    }
 
     &_type_primary {
         background: none;

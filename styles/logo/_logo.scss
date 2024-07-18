@@ -1,7 +1,15 @@
 .logo {
     display: inline-flex;
 
-    &_size_s {
+    &_type_main {
+        width: 100px;
         height: 32px;
+    }
+}
+
+@media screen and (min-width: $res-laptop) {
+    .logo_type_main {
+        width: 125px;
+        height: 40px;
     }
 }

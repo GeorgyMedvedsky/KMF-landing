@@ -35,6 +35,11 @@ function setMenuFunctionality() {
         const title = item.querySelector(`.${classes.MENU_TITLE}`);
         const dropdownContent = item.querySelector(`.${classes.DROPDOWN_CONTENT}`);
         title.addEventListener('click', function () {
+            menuItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.querySelector(`.${classes.DROPDOWN_CONTENT}`).classList.remove(classes.DROPDOWN_CONTENT_OPEN);
+                }
+            });
             this.classList.toggle('arrow-drop_open');
             dropdownContent.classList.toggle(classes.DROPDOWN_CONTENT_OPEN);
         });
