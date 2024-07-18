@@ -13,3 +13,21 @@
         width: 70%;
     }
 }
+
+@media screen and (min-width: $res-laptop) {
+    .about {
+        padding-top: 144px;
+        padding-bottom: 234px;
+        @include flex(flex, center, center, column);
+
+        &__description {
+            @include font(32px, 500, 48px);
+            margin-bottom: 42px;
+            width: 896px;
+        }
+
+        &__button {
+            width: 240px;
+        }
+    }
+}

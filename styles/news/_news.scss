@@ -12,3 +12,19 @@
         gap: 16px;
     }
 }
+
+@media screen and (min-width: $res-laptop) {
+    .news {
+        padding-top: 180px;
+        @include flex(flex, initial, center, column);
+
+        &__title {
+            @include font(44px, 700, 52px);
+            margin: 0;
+        }
+
+        &__cards {
+            gap: 24px;
+        }
+    }
+}

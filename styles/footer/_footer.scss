@@ -4,7 +4,8 @@
     padding-bottom: 90px;
 
     &__links {
-        @include flex(flex, space-between, center, row);
+        @include flex(flex, initial, center, row);
+        gap: 26px;
     }
 
     &__menu {
@@ -26,5 +27,17 @@
 
     &__link {
         @include font(14px, 400, 16px);
+
+        &:has(.social) {
+            margin-left: auto;
+        }
+    }
+}
+
+@media screen and (min-width: $res-laptop) {
+    .footer {
+        &__menu {
+            justify-content: center;
+        }
     }
 }

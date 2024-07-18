@@ -11,3 +11,19 @@
         padding: 22px 0 40px 16px;
     }
 }
+
+@media screen and (min-width: $res-laptop) {
+    .study {
+        padding-top: 220px;
+        @include flex(flex, initial, center, column);
+
+        &__title {
+            @include font(44px, 700, 52px);
+        }
+    
+        &__cards {
+            gap: 24px;
+            padding: 20px 40px 40px 40px;
+        }
+    }
+}

@@ -3,27 +3,76 @@
     background-color: $background-secondary;
     padding-top: 16px;
     padding-bottom: 16px;
-    background-image: url('../images/story-back.png');
-    background-repeat: no-repeat;
-    background-position: center 206px;
+
+    &__text-content {
+        @include flex(flex, initial, initial, column);
+    }
+
+    &__image-content {
+        height: 350px;
+        max-height: 400px;
+        background: url(/images/story-back.png) no-repeat center/cover;
+        order: 3;
+        margin-bottom: 16px;
+    }
 
     &__title {
         @include font(20px, 500, 23px);
         margin-bottom: 24px;
+        order: 1
     }
 
     &__name {
         @include font(32px, 700, 42px);
-        margin-bottom: 380px;
+        margin-bottom: 16px;
         max-width: 360px;
+        order: 2;
     }
 
     &__paragraph {
         @include font(16px, 400, 22px);
         margin-bottom: 16px;
+        order: 4;
+    }
+
+    &__link {
+        margin: 0 16px;
+        order: 5;
     }
 
     &__button {
         width: 100%;
+    }
+}
+
+@media screen and (min-width: $res-tablet) {
+    .story {
+        position: relative;
+        padding-top: 87px;
+        padding-bottom: 103px;
+
+        &__name {
+            @include font(44px, 700, 52px);
+            margin-bottom: 32px;
+            width: 510px;
+            max-width: 510px;
+        }
+
+        &__image-content {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50%;
+            height: 600px;
+            align-self: end;
+        }
+
+        &__paragraph {
+            width: 380px;
+        }
+
+        &__button {
+            width: 170px;
+        }
     }
 }

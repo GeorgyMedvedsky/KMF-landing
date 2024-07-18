@@ -11,3 +11,15 @@
         gap: 24px;
     }
 }
+
+@media screen and (min-width: $res-laptop) {
+    .business {
+        padding-top: 220px;
+        @include flex(flex, initial, center, column);
+
+        &__title {
+            @include font(44px, 700, 52px);
+            margin-bottom: 22px;
+        }
+    }
+}
