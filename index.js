@@ -111,9 +111,11 @@ function setSliderFunctionality() {
             sliderList.addEventListener('touchstart', (e) => {
                 startX = e.touches[0].clientX;
                 startY = e.touches[0].clientY;
-            }, {
-                passive: true,
-                touchAction: 'auto'
+            });
+
+            sliderList.addEventListener('pointerdown', (e) => {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
             });
     
             sliderList.addEventListener('touchmove', (e) => {
@@ -121,14 +123,23 @@ function setSliderFunctionality() {
                 endY = e.touches[0].clientY;
     
                 if (Math.abs(startX - endX) > Math.abs(startY - endY)) {
-                    e.preventDefault();
+                    e.stopPropagation()
                     isHorizontalSwipe = true;
                 } else {
                     isHorizontalSwipe = false;
                 }
-            }, {
-                passive: true,
-                touchAction: 'auto'
+            });
+
+            sliderList.addEventListener('pointermove', (e) => {
+                endX = e.touches[0].clientX;
+                endY = e.touches[0].clientY;
+    
+                if (Math.abs(startX - endX) > Math.abs(startY - endY)) {
+                    e.stopPropagation()
+                    isHorizontalSwipe = true;
+                } else {
+                    isHorizontalSwipe = false;
+                }
             });
     
             sliderList.addEventListener('touchend', () => {
@@ -141,10 +152,19 @@ function setSliderFunctionality() {
                     updateSlider();
                 }
                 isHorizontalSwipe = false;
-            }, {
-                passive: true,
-                touchAction: 'auto'
-            });    
+            });
+
+            sliderList.addEventListener('pointerup', () => {
+                if (isHorizontalSwipe && Math.abs(startX - endX) > 80) {
+                    if (startX > endX + 50) {
+                        if (currentIndex < sliderItems.length - 1) currentIndex++;
+                    } else if (startX < endX - 50) {
+                        if (currentIndex > 0) currentIndex--;
+                    }
+                    updateSlider();
+                }
+                isHorizontalSwipe = false;
+            });  
             updateSlider();
         });
     });
