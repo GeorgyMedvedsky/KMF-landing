@@ -126,6 +126,9 @@ function setSliderFunctionality() {
                 } else {
                     isHorizontalSwipe = false;
                 }
+            }, {
+                passive: true,
+                touchAction: 'auto'
             });
     
             sliderList.addEventListener('touchend', () => {
@@ -138,10 +141,11 @@ function setSliderFunctionality() {
                     updateSlider();
                 }
                 isHorizontalSwipe = false;
-            }, { passive: true });    
+            }, {
+                passive: true,
+                touchAction: 'auto'
+            });    
             updateSlider();
-
-            
         });
     });
 }
