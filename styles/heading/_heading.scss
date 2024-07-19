@@ -42,6 +42,10 @@
         min-height: 742px;
         box-sizing: border-box;
 
+        &__content {
+            padding: 60px;
+        }
+
         &__image {
             height: 100%;
         }
@@ -56,6 +60,14 @@
 
         &__button {
             width: 240px;
+        }
+    }
+}
+
+@media screen and (min-width: $res-desktop) {
+    .heading {
+        &__content {
+            padding-left: calc(50% - 580px);
         }
     }
 }

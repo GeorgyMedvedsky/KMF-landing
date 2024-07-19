@@ -132,7 +132,7 @@
         & .slider__controls {
             position: absolute;
             bottom: 50px;
-            left: 40px;
+            left: 60px;
 
             & .prev, & .next {
                 display: flex;
@@ -172,6 +172,14 @@
             & .prev, & .next {
                  background-color: #FFF0F5;   
             }
+        }
+    }
+}
+
+@media screen and (min-width: $res-desktop) {
+    #slider-for-heading {
+        & .slider__controls {
+            left: calc(50% - 580px);
         }
     }
 }
