@@ -1017,7 +1017,7 @@
     color: #9D097C;
   }
 }
-@media (hover: false) {
+@media (hover: none) {
   .footer__link:active {
     color: #9D097C;
   }
