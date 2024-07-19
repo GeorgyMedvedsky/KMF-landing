@@ -113,7 +113,7 @@ function setSliderFunctionality() {
                 startY = e.touches[0].clientY;
             }, {
                 passive: true,
-                touchAction: 'pan-x'
+                touchAction: 'auto'
             });
     
             sliderList.addEventListener('touchmove', (e) => {
