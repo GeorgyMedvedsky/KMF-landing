@@ -1,5 +1,5 @@
 .business {
-    padding-top: 80px;
+    padding: 80px 16px 0;
 
     &__title {
         @include font(24px, 700, 32px);
@@ -12,14 +12,26 @@
     }
 }
 
+@media screen and (min-width: $res-tablet) {
+    .business {
+        padding: 120px 40px 0;
+    }
+}
+
 @media screen and (min-width: $res-laptop) {
     .business {
-        padding-top: 220px;
+        padding: 220px 40px 0;
         @include flex(flex, initial, center, column);
 
         &__title {
             @include font(44px, 700, 52px);
             margin-bottom: 22px;
         }
+    }
+}
+
+@media screen and (min-width: $res-desktop) {
+    .business {
+        padding: 220px calc(50% - 600px) 0;
     }
 }

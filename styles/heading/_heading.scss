@@ -1,6 +1,10 @@
 .heading {
     background-color: $background-secondary;
 
+    &__content {
+        padding: 0 16px;
+    }
+
     &__image-list {
         flex-shrink: 0;
         margin-bottom: 16px;
@@ -35,16 +39,20 @@
     }
 }
 
+@media screen and (min-width: $res-tablet) {
+    .heading {
+        &__content {
+            padding: 0 40px;
+        }
+    }
+}
+
 @media screen and (min-width: $res-laptop) {
     .heading {
         @include flex(flex, initial, center, row-reverse);
         position: relative;
         min-height: 742px;
         box-sizing: border-box;
-
-        &__content {
-            padding: 60px;
-        }
 
         &__image {
             height: 100%;
@@ -67,7 +75,7 @@
 @media screen and (min-width: $res-desktop) {
     .heading {
         &__content {
-            padding-left: calc(50% - 580px);
+            padding-left: calc(50% - 600px);
         }
     }
 }

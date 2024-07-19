@@ -1,7 +1,6 @@
 .footer {
     background-color: $background-secondary;
-    padding-top: 25px;
-    padding-bottom: 90px;
+    padding: 25px 16px 90px;
 
     &__links {
         @include flex(flex, initial, center, row);
@@ -48,10 +47,22 @@
     }
  }
 
+@media screen and (min-width: $res-tablet) {
+    .footer {
+        padding: 25px 40px 90px;
+    }
+}
+
 @media screen and (min-width: $res-laptop) {
     .footer {
         &__menu {
             justify-content: center;
         }
+    }
+}
+
+@media screen and (min-width: $res-tablet) {
+    .footer {
+        padding: 25px calc(50% - 600px) 90px;
     }
 }

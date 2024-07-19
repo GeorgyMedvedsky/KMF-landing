@@ -1,8 +1,7 @@
 .story {
     @include flex(flex, initial, initial, column);
     background-color: $background-secondary;
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding: 16px;
 
     &__text-content {
         @include flex(flex, initial, initial, column);
@@ -36,7 +35,6 @@
     }
 
     &__link {
-        margin: 0 16px;
         order: 5;
     }
 
@@ -45,11 +43,16 @@
     }
 }
 
+@media screen and (min-width: 550px) {
+    .story {
+        padding: 16px calc(50% - 241px);
+    }
+}
+
 @media screen and (min-width: $res-tablet) {
     .story {
         position: relative;
-        padding-top: 87px;
-        padding-bottom: 103px;
+        padding: 86px 0 102px 40px;
 
         &__name {
             @include font(44px, 700, 52px);
@@ -65,6 +68,7 @@
             width: 50%;
             height: 600px;
             align-self: end;
+            margin: 0;
         }
 
         &__paragraph {
@@ -73,6 +77,22 @@
 
         &__button {
             width: 170px;
+        }
+    }
+}
+
+@media screen and (min-width: $res-laptop) {
+    .story {
+        padding-left: 60px;
+    }
+}
+
+@media screen and (min-width: $res-desktop) {
+    .story {
+        padding: 86px calc((50% - 580px)) 102px;
+
+        &__image-content {
+            width: 640px;
         }
     }
 }

@@ -132,7 +132,7 @@
         & .slider__controls {
             position: absolute;
             bottom: 50px;
-            left: 60px;
+            left: 40px;
 
             & .prev, & .next {
                 display: flex;
@@ -179,7 +179,7 @@
 @media screen and (min-width: $res-desktop) {
     #slider-for-heading {
         & .slider__controls {
-            left: calc(50% - 580px);
+            left: calc(50% - 600px);
         }
     }
 }

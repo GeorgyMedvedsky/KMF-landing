@@ -1,5 +1,5 @@
 .study {
-    padding-top: 80px;
+    padding: 80px 16px 0;
 
     &__title {
         @include font(24px, 700, 32px);
@@ -12,9 +12,15 @@
     }
 }
 
+@media screen and (min-width: $res-tablet) {
+    .study {
+        padding: 80px 40px 0;
+    }
+}
+
 @media screen and (min-width: $res-laptop) {
     .study {
-        padding-top: 220px;
+        padding: 220px 40px 0;
         @include flex(flex, initial, center, column);
 
         &__title {
@@ -25,5 +31,11 @@
             gap: 24px;
             padding: 20px 40px 40px 40px;
         }
+    }
+}
+
+@media screen and (min-width: $res-desktop) {
+    .study {
+        padding: 220px calc(50% - 600px) 0;
     }
 }

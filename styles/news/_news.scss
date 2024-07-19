@@ -1,6 +1,5 @@
 .news {
-    padding-top: 40px;
-    padding-bottom: 80px;
+    padding: 40px 16px 80px;
 
     &__title {
         @include font(24px, 700, 32px);
@@ -13,18 +12,30 @@
     }
 }
 
+@media screen and (min-width: $res-tablet) {
+    .news {
+        padding: 40px 40px 80px;
+    }
+}
+
 @media screen and (min-width: $res-laptop) {
     .news {
-        padding-top: 180px;
+        padding: 180px 40px 80px;
         @include flex(flex, initial, center, column);
 
         &__title {
             @include font(44px, 700, 52px);
-            margin: 0;
+            margin-bottom: 24px;
         }
 
         &__cards {
             gap: 24px;
         }
+    }
+}
+
+@media screen and (min-width: $res-desktop) {
+    .news {
+        padding: 180px calc(50% - 600px) 80px;
     }
 }

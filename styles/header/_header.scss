@@ -1,4 +1,5 @@
 .header {
+    padding: 0 16px;
     height: 72px;
     @include flex(flex, initial, center, row);
 
@@ -20,8 +21,20 @@
     }
 }
 
+@media screen and (min-width: $res-tablet) {
+    .header {
+        padding: 0 40px;
+    }
+}
+
 @media screen and (min-width: $res-laptop) {
     .header {
         height: 100px;
+    }
+}
+
+@media screen and (min-width: $res-desktop) {
+    .header {
+        padding: 0 calc(50% - 600px);
     }
 }
