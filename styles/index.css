@@ -456,7 +456,7 @@
   margin-left: 24px;
   border: none;
   border-radius: 12px;
-  padding: 8px 12px;
+  padding: 10px 15px;
   font-size: 14px;
   font-weight: 400;
   line-height: 16px;
@@ -465,6 +465,7 @@
   -moz-appearance: none;
   appearance: none;
   background-color: #F6EEE8;
+  cursor: pointer;
 }
 .header__menu {
   margin-left: auto;

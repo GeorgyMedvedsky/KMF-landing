@@ -7,13 +7,14 @@
         margin-left: 24px;
         border: none;
         border-radius: 12px;
-        padding: 8px 12px;
+        padding: 10px 15px;
         @include font(14px, 400, 16px);
         color: $font-color-primary;
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
         background-color: #F6EEE8;
+        cursor: pointer;
     }
 
     &__menu {
