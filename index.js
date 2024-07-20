@@ -108,12 +108,12 @@ function setSliderFunctionality() {
                 updateSlider();
             });
 
-            sliderList.addEventListener('mousedown', (e) => {
+            sliderList.addEventListener('pointerdown', (e) => {
                 startX = e.clientX;
                 startY = e.clientY;
             });
     
-            sliderList.addEventListener('mousemove', (e) => {
+            sliderList.addEventListener('pointermove', (e) => {
                 endX = e.clientX;
                 endY = e.clientY;
     
@@ -125,8 +125,8 @@ function setSliderFunctionality() {
                   }
             });
     
-            sliderList.addEventListener('mouseup', () => {
-                if (isHorizontalSwipe && Math.abs(startX - endX) > 80) {
+            sliderList.addEventListener('pointerup', () => {
+                if (isHorizontalSwipe && Math.abs(startX - endX) > 70) {
                     if (startX > endX + 50) {
                         if (currentIndex < sliderItems.length - 1) currentIndex++;
                     } else if (startX < endX - 50) {
