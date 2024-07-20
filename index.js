@@ -111,18 +111,12 @@ function setSliderFunctionality() {
             sliderList.addEventListener('pointerdown', (e) => {
                 startX = e.clientX;
                 startY = e.clientY;
-            }, {
-                passive: true,
-                touchAction: 'auto'
-            });
+            }, { passive: true });
 
             sliderList.addEventListener('touchatart', (e) => {
                 startX = e.touches[0].clientX;
                 startY = e.touches[0].clientY;
-            }, {
-                passive: true,
-                touchAction: 'auto'
-            });
+            }, { passive: true });
     
             sliderList.addEventListener('pointermove', (e) => {
                 endX = e.clientX;
