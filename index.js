@@ -51,37 +51,38 @@ function setSliderFunctionality() {
     document.addEventListener('DOMContentLoaded', () => {
         const classes = {
             SLIDER: 'slider',
-            SLIDER_LIST: 'slider__list',
-            SLIDER_ITEM: 'slider__item',
-            SLIDER_CONTROLS: 'slider__controls',
-            SLIDER_TABS: 'slider__tabs',
-            SLIDER_TAB: 'slider__tab',
-            SLIDER_TAB_ACTIVE: 'slider__tab_active',
-            SLIDER_DOT: 'slider__dot',
-            SLIDER_DOT_ACTIVE: 'slider__dot_active'
+            LIST: 'slider__list',
+            ITEM: 'slider__item',
+            CONTROLS: 'slider__controls',
+            TABS: 'slider__tabs',
+            TAB: 'slider__tab',
+            TAB_ACTIVE: 'slider__tab_active',
+            DOT: 'slider__dot',
+            DOT_ACTIVE: 'slider__dot_active'
         };
         const sliders = document.querySelectorAll(`.${classes.SLIDER}`);
-    
+        
         sliders.forEach(slider => {
             const tabTemplate = document.querySelector('#tab-template').content;
-            const sliderList = slider.querySelector(`.${classes.SLIDER_LIST}`);
-            const sliderItems = Array.from(slider.querySelectorAll(`.${classes.SLIDER_ITEM}`));
-            const sliderControls = slider.querySelector(`.${classes.SLIDER_CONTROLS}`);
-            const tabList = sliderControls.querySelector(`.${classes.SLIDER_TABS}`);
+            const sliderList = slider.querySelector(`.${classes.LIST}`);
+            const sliderItems = Array.from(slider.querySelectorAll(`.${classes.ITEM}`));
+            const sliderControls = slider.querySelector(`.${classes.CONTROLS}`);
+            const tabList = sliderControls.querySelector(`.${classes.TABS}`);
             const prevBtn = sliderControls.querySelector('.prev');
             const nextBtn = sliderControls.querySelector('.next');
+
             let startX, startY, endX, endY;
             let currentIndex = 0;
             let isHorizontalSwipe = false;
 
             createTabs(sliderItems.length);
 
-            const tabs = Array.from(tabList.querySelectorAll(`.${classes.SLIDER_TAB}`));
-            const dots = Array.from(tabList.querySelectorAll(`.${classes.SLIDER_DOT}`));
+            const tabs = Array.from(tabList.querySelectorAll(`.${classes.TAB}`));
+            const dots = Array.from(tabList.querySelectorAll(`.${classes.DOT}`));
     
             function createTabs(length) {
                 for(let i = 0; i < length; i++) {
-                    const tab = tabTemplate.querySelector(`.${classes.SLIDER_TAB}`).cloneNode(true);
+                    const tab = tabTemplate.querySelector(`.${classes.TAB}`).cloneNode(true);
                     tabList.append(tab);
                 }
             }
@@ -91,10 +92,10 @@ function setSliderFunctionality() {
                     ? -currentIndex * (sliderItems[0].clientWidth + gap)
                     : -currentIndex * (sliderList.offsetWidth * (100 / 100));
                 sliderList.style.transform = `translateX(${offset}px)`;
-                tabs.forEach(tab => tab.classList.remove(classes.SLIDER_TAB_ACTIVE));
-                dots.forEach(dot => dot.classList.remove(classes.SLIDER_DOT_ACTIVE));
-                tabs[currentIndex].classList.add(classes.SLIDER_TAB_ACTIVE);
-                dots[currentIndex].classList.add(classes.SLIDER_DOT_ACTIVE);
+                tabs.forEach(tab => tab.classList.remove(classes.TAB_ACTIVE));
+                dots.forEach(dot => dot.classList.remove(classes.DOT_ACTIVE));
+                tabs[currentIndex].classList.add(classes.TAB_ACTIVE);
+                dots[currentIndex].classList.add(classes.DOT_ACTIVE);
             }
 
             nextBtn.addEventListener('click', () => {
@@ -120,7 +121,6 @@ function setSliderFunctionality() {
                 endY = e.clientY;
     
                 if (Math.abs(startX - endX) > Math.abs(startY - endY)) {
-                    e.stopPropagation();
                     isHorizontalSwipe = true;
                   } else {
                     isHorizontalSwipe = false;

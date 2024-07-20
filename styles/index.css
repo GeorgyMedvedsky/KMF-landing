@@ -253,17 +253,19 @@
 }
 .slider {
   width: 100%;
-}
-.slider__container {
   overflow: hidden;
-  margin-bottom: 16px;
 }
 .slider__list {
   display: flex;
+  width: 100%;
+  height: 100%;
+  transform: translate(0);
   transition: transform 0.5s ease;
 }
 .slider__item {
   flex-shrink: 0;
+  width: 100%;
+  height: 100%;
 }
 .slider__controls {
   display: flex;
@@ -325,9 +327,6 @@
   background-color: #9D097C;
 }
 
-#slider-for-heading .slider__item {
-  width: 100%;
-}
 #slider-for-heading .slider__controls {
   display: flex;
 }
@@ -335,14 +334,24 @@
   display: none;
 }
 
+#slider-for-business .slider__item {
+  width: 240px;
+}
 #slider-for-business .slider__controls {
   display: none;
 }
 
+#slider-for-study .slider__item {
+  width: 280px;
+  height: auto;
+}
 #slider-for-study .slider__controls {
   display: none;
 }
 
+#slider-for-news .slider__item {
+  width: 292px;
+}
 #slider-for-news .slider__controls {
   display: none;
 }
@@ -352,13 +361,8 @@
     width: 50%;
     height: 742px;
   }
-  #slider-for-heading .slider__container {
-    margin: 0;
-    height: 100%;
-  }
   #slider-for-heading .slider__list {
     margin: 0;
-    height: 100%;
   }
   #slider-for-heading .slider__controls {
     position: absolute;
@@ -373,23 +377,6 @@
     margin-top: 32px;
   }
   #slider-for-business .slider__controls .prev, #slider-for-business .slider__controls .next {
-    background-color: #FFF0F5;
-  }
-  #slider-for-study {
-    max-width: 1280px;
-  }
-  #slider-for-study .slider__controls {
-    display: flex;
-    margin-top: 32px;
-  }
-  #slider-for-study .slider__controls .prev, #slider-for-study .slider__controls .next {
-    background-color: #FFF0F5;
-  }
-  #slider-for-news .slider__controls {
-    display: flex;
-    margin-top: 32px;
-  }
-  #slider-for-news .slider__controls .prev, #slider-for-news .slider__controls .next {
     background-color: #FFF0F5;
   }
 }
@@ -672,6 +659,9 @@
     position: relative;
     min-height: 742px;
     box-sizing: border-box;
+  }
+  .heading__content {
+    width: 50%;
   }
   .heading__image {
     height: 100%;
@@ -1017,7 +1007,7 @@
     color: #9D097C;
   }
 }
-@media (hover: none) {
+@media (hover: false) {
   .footer__link:active {
     color: #9D097C;
   }
