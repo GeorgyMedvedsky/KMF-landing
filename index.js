@@ -171,11 +171,17 @@ function updateCarousel() {
 carouselList.addEventListener('pointerdown', (e) => {
     startX = e.clientX;
     startY = e.clientY;
+  }, {
+    passive: true,
+    touchAction: 'auto'
   });
   
   carouselList.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
+  }, {
+    passive: true,
+    touchAction: 'auto'
   });
 
 // Обработчик события touchmove
@@ -224,6 +230,10 @@ carouselList.addEventListener('touchend', () => {
       updateCarousel();
     }
     isHorizontalSwipe = false;
+    startX = null;
+    startY = null;
+    endX = null;
+    endY = null;
   });
 
 // Обработчики событий для кнопок навигации
