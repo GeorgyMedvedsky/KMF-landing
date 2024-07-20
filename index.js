@@ -169,12 +169,14 @@ function updateCarousel() {
 
 // Обработчик события touchstart
 carouselList.addEventListener('pointerdown', (e) => {
-  startX = e.clientX;
-  startY = e.clientY;
-}, {
-  passive: true,
-  touchAction: 'none'
-});
+    startX = e.clientX;
+    startY = e.clientY;
+  });
+  
+  carouselList.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  });
 
 // Обработчик события touchmove
 carouselList.addEventListener('pointermove', (e) => {
@@ -188,6 +190,17 @@ carouselList.addEventListener('pointermove', (e) => {
   }
 });
 
+carouselList.addEventListener('touchmove', (e) => {
+    endX = e.touches[0].clientX;
+    endY = e.touches[0].clientY;
+  
+    if (Math.abs(startX - endX) > Math.abs(startY - endY)) {
+      isHorizontalSwipe = true;
+    } else {
+      isHorizontalSwipe = false;
+    }
+  });
+
 // Обработчик события touchend
 carouselList.addEventListener('pointerup', () => {
   if (isHorizontalSwipe && Math.abs(startX - endX) > 80) {
@@ -199,7 +212,19 @@ carouselList.addEventListener('pointerup', () => {
     updateCarousel();
   }
   isHorizontalSwipe = false;
-}, { passive: true });
+});
+
+carouselList.addEventListener('touchend', () => {
+    if (isHorizontalSwipe && Math.abs(startX - endX) > 80) {
+      if (startX > endX + 50) {
+        if (currentIndex < carouselItems.length - 1) currentIndex++;
+      } else if (startX < endX - 50) {
+        if (currentIndex > 0) currentIndex--;
+      }
+      updateCarousel();
+    }
+    isHorizontalSwipe = false;
+  });
 
 // Обработчики событий для кнопок навигации
 prevBtn.addEventListener('click', () => {
