@@ -113,12 +113,31 @@ function setSliderFunctionality() {
                 startY = e.clientY;
             }, {
                 passive: true,
-                touchAction: 'none'
+                touchAction: 'auto'
+            });
+
+            sliderList.addEventListener('touchatart', (e) => {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+            }, {
+                passive: true,
+                touchAction: 'auto'
             });
     
             sliderList.addEventListener('pointermove', (e) => {
                 endX = e.clientX;
                 endY = e.clientY;
+    
+                if (Math.abs(startX - endX) > Math.abs(startY - endY)) {
+                    isHorizontalSwipe = true;
+                  } else {
+                    isHorizontalSwipe = false;
+                  }
+            });
+
+            sliderList.addEventListener('touchmove', (e) => {
+                endX = e.touches[0].clientX;
+                endY = e.touches[0].clientY;
     
                 if (Math.abs(startX - endX) > Math.abs(startY - endY)) {
                     isHorizontalSwipe = true;
@@ -137,7 +156,27 @@ function setSliderFunctionality() {
                     updateSlider();
                 }
                 isHorizontalSwipe = false;
-            }, { passive: true });
+                startX = null;
+                startY = null;
+                endX = null;
+                endY = null;
+            });
+
+            sliderList.addEventListener('touchend', () => {
+                if (isHorizontalSwipe && Math.abs(startX - endX) > 80) {
+                    if (startX > endX + 50) {
+                        if (currentIndex < sliderItems.length - 1) currentIndex++;
+                    } else if (startX < endX - 50) {
+                        if (currentIndex > 0) currentIndex--;
+                    }
+                    updateSlider();
+                }
+                isHorizontalSwipe = false;
+                startX = null;
+                startY = null;
+                endX = null;
+                endY = null;
+            });
 
             updateSlider();
         });
@@ -147,105 +186,3 @@ function setSliderFunctionality() {
 resetDefaultBehaviorForLinks();
 setMenuFunctionality();
 setSliderFunctionality();
-
-
-// Получаем элементы карусели
-const carousel = document.querySelector('.carousel');
-const carouselList = carousel.querySelector('.carousel-list');
-const prevBtn = carousel.querySelector('.prev');
-const nextBtn = carousel.querySelector('.next');
-const carouselItems = Array.from(carouselList.children);
-
-// Инициализируем переменные
-let currentIndex = 0;
-let startX, startY, endX, endY;
-let isHorizontalSwipe = false;
-
-// Функция обновления карусели
-function updateCarousel() {
-  const translateX = -currentIndex * carouselList.offsetWidth;
-  carouselList.style.transform = `translateX(${translateX}px)`;
-}
-
-// Обработчик события touchstart
-carouselList.addEventListener('pointerdown', (e) => {
-    startX = e.clientX;
-    startY = e.clientY;
-  }, {
-    passive: true,
-    touchAction: 'auto'
-  });
-  
-  carouselList.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-  }, {
-    passive: true,
-    touchAction: 'auto'
-  });
-
-// Обработчик события touchmove
-carouselList.addEventListener('pointermove', (e) => {
-  endX = e.clientX;
-  endY = e.clientY;
-
-  if (Math.abs(startX - endX) > Math.abs(startY - endY)) {
-    isHorizontalSwipe = true;
-  } else {
-    isHorizontalSwipe = false;
-  }
-});
-
-carouselList.addEventListener('touchmove', (e) => {
-    endX = e.touches[0].clientX;
-    endY = e.touches[0].clientY;
-  
-    if (Math.abs(startX - endX) > Math.abs(startY - endY)) {
-      isHorizontalSwipe = true;
-    } else {
-      isHorizontalSwipe = false;
-    }
-  });
-
-// Обработчик события touchend
-carouselList.addEventListener('pointerup', () => {
-  if (isHorizontalSwipe && Math.abs(startX - endX) > 80) {
-    if (startX > endX + 50) {
-      if (currentIndex < carouselItems.length - 1) currentIndex++;
-    } else if (startX < endX - 50) {
-      if (currentIndex > 0) currentIndex--;
-    }
-    updateCarousel();
-  }
-  isHorizontalSwipe = false;
-});
-
-carouselList.addEventListener('touchend', () => {
-    if (isHorizontalSwipe && Math.abs(startX - endX) > 80) {
-      if (startX > endX + 50) {
-        if (currentIndex < carouselItems.length - 1) currentIndex++;
-      } else if (startX < endX - 50) {
-        if (currentIndex > 0) currentIndex--;
-      }
-      updateCarousel();
-    }
-    isHorizontalSwipe = false;
-    startX = null;
-    startY = null;
-    endX = null;
-    endY = null;
-  });
-
-// Обработчики событий для кнопок навигации
-prevBtn.addEventListener('click', () => {
-  if (currentIndex > 0) currentIndex--;
-  updateCarousel();
-});
-
-nextBtn.addEventListener('click', () => {
-  if (currentIndex < carouselItems.length - 1) currentIndex++;
-  updateCarousel();
-});
-
-// Инициализируем карусель
-updateCarousel();
