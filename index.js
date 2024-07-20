@@ -147,7 +147,7 @@ function setSliderFunctionality() {
                   }
             });
     
-            sliderList.addEventListener('pointerup', () => {
+            window.addEventListener('pointerup', () => {
                 if (isHorizontalSwipe && Math.abs(startX - endX) > 70) {
                     if (startX > endX + 50) {
                         if (currentIndex < sliderItems.length - 1) currentIndex++;
