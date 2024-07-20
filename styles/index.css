@@ -326,6 +326,9 @@
   transform: scale(2);
   background-color: #9D097C;
 }
+.slider.no-transform {
+  transform: none;
+}
 
 #slider-for-heading .slider__controls {
   display: flex;
@@ -372,12 +375,18 @@
   #slider-for-heading .slider__controls .prev, #slider-for-heading .slider__controls .next {
     display: flex;
   }
+  #slider-for-business .slider__item {
+    width: 360px;
+  }
   #slider-for-business .slider__controls {
     display: flex;
     margin-top: 32px;
   }
   #slider-for-business .slider__controls .prev, #slider-for-business .slider__controls .next {
     background-color: #FFF0F5;
+  }
+  #slider-for-study .slider__item {
+    width: 360px;
   }
 }
 @media screen and (min-width: 1280px) {

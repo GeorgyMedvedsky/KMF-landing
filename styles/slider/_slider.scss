@@ -80,6 +80,10 @@
             background-color: $slider-tab-color-active;
         }
     }
+
+    &.no-transform {
+        transform: none;
+    }
 }
 
 #slider-for-heading {
@@ -144,6 +148,10 @@
     }
 
     #slider-for-business {
+        & .slider__item {
+            width: 360px;
+        }
+
         & .slider__controls {
             display: flex;
             margin-top: 32px;
@@ -151,6 +159,12 @@
             & .prev, & .next {
                  background-color: #FFF0F5;   
             }
+        }
+    }
+
+    #slider-for-study {
+        & .slider__item {
+            width: 360px;
         }
     }
 }
