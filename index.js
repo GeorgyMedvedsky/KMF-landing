@@ -118,7 +118,6 @@ function setSliderFunctionality() {
                 endY = e.clientY;
     
                 if (Math.abs(startX - endX) > Math.abs(startY - endY)) {
-                    e.preventDefault();
                     isHorizontalSwipe = true;
                   } else {
                     isHorizontalSwipe = false;
