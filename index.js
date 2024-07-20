@@ -71,7 +71,30 @@ function setSliderFunctionality() {
             const prevBtn = sliderControls.querySelector('.prev');
             const nextBtn = sliderControls.querySelector('.next');
 
-            let startX, startY, endX, endY;
+            let pressed = false;
+            let startX = 0;
+
+            sliderList.addEventListener('mousedown', function (e) {
+                pressed = true;
+                startX = e.clientX;
+            });
+
+            sliderList.addEventListener('mouseleave', function (e) {
+                pressed = false;
+            });
+
+            sliderList.addEventListener('mousemove', function (e) {
+                if(!pressed) {
+                    return;
+                }
+                this.scrollLeft += startX - e.clientX;
+            });
+
+            window.addEventListener('mouseup', function (e) {
+                pressed = false;
+            });
+
+            /* let startX, startY, endX, endY;
             let currentIndex = 0;
             let isHorizontalSwipe = false;
 
@@ -140,7 +163,7 @@ function setSliderFunctionality() {
                 endY = null;
             });
 
-            updateSlider();
+            updateSlider(); */
         });
     });
 }
