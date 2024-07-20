@@ -87,10 +87,9 @@ function setSliderFunctionality() {
             }
 
             function updateSlider(gap = 16) {
-                const maxOffset = sliderList.offsetWidth - slider.offsetWidth;
                 const offset = slider.id !== 'slider-for-heading'
-                    ? Math.min(-currentIndex * (sliderItems[0].clientWidth + gap), maxOffset)
-                    : Math.min(-currentIndex * (sliderList.offsetWidth * (100 / 100)), maxOffset);
+                    ? -currentIndex * (sliderItems[0].clientWidth + gap)
+                    : -currentIndex * (sliderList.offsetWidth * (100 / 100));
                 sliderList.style.transform = `translateX(${offset}px)`;
                 tabs.forEach(tab => tab.classList.remove(classes.SLIDER_TAB_ACTIVE));
                 dots.forEach(dot => dot.classList.remove(classes.SLIDER_DOT_ACTIVE));
@@ -107,53 +106,27 @@ function setSliderFunctionality() {
                 if (currentIndex > 0) currentIndex--;
                 updateSlider();
             });
-    
-            sliderList.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-                startY = e.touches[0].clientY;
-            });
 
             sliderList.addEventListener('pointerdown', (e) => {
-                startX = e.touches[0].clientX;
-                startY = e.touches[0].clientY;
+                startX = e.clientX;
+                startY = e.clientY;
+            }, {
+                passive: true,
+                touchAction: 'none'
             });
     
-            sliderList.addEventListener('touchmove', (e) => {
-                endX = e.touches[0].clientX;
-                endY = e.touches[0].clientY;
-    
-                if (Math.abs(startX - endX) > Math.abs(startY - endY)) {
-                    e.stopPropagation()
-                    isHorizontalSwipe = true;
-                } else {
-                    isHorizontalSwipe = false;
-                }
-            });
-
             sliderList.addEventListener('pointermove', (e) => {
-                endX = e.touches[0].clientX;
-                endY = e.touches[0].clientY;
+                endX = e.clientX;
+                endY = e.clientY;
     
                 if (Math.abs(startX - endX) > Math.abs(startY - endY)) {
-                    e.stopPropagation()
+                    e.stopPropagation();
                     isHorizontalSwipe = true;
-                } else {
+                  } else {
                     isHorizontalSwipe = false;
-                }
+                  }
             });
     
-            sliderList.addEventListener('touchend', () => {
-                if (isHorizontalSwipe && Math.abs(startX - endX) > 80) {
-                    if (startX > endX + 50) {
-                        if (currentIndex < sliderItems.length - 1) currentIndex++;
-                    } else if (startX < endX - 50) {
-                        if (currentIndex > 0) currentIndex--;
-                    }
-                    updateSlider();
-                }
-                isHorizontalSwipe = false;
-            });
-
             sliderList.addEventListener('pointerup', () => {
                 if (isHorizontalSwipe && Math.abs(startX - endX) > 80) {
                     if (startX > endX + 50) {
@@ -164,7 +137,8 @@ function setSliderFunctionality() {
                     updateSlider();
                 }
                 isHorizontalSwipe = false;
-            });  
+            }, { passive: true });
+
             updateSlider();
         });
     });
