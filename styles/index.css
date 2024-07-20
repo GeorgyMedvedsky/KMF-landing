@@ -1055,3 +1055,51 @@
   width: 16px;
   height: 16px;
 }/*# sourceMappingURL=index.css.map */
+
+/* Стили для контейнера карусели */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 300px; /* ширина карусели */
+  height: 200px; /* высота карусели */
+}
+
+/* Стили для списка элементов карусели */
+.carousel-list {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Стили для элементов карусели */
+.carousel-item {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Стили для кнопок навигации */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
