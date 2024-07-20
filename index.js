@@ -108,17 +108,12 @@ function setSliderFunctionality() {
                 updateSlider();
             });
 
-            sliderList.addEventListener('pointerdown', (e) => {
+            sliderList.addEventListener('mousedown', (e) => {
                 startX = e.clientX;
                 startY = e.clientY;
-            }, { passive: true });
-
-            sliderList.addEventListener('touchatart', (e) => {
-                startX = e.touches[0].clientX;
-                startY = e.touches[0].clientY;
-            }, { passive: true });
+            });
     
-            sliderList.addEventListener('pointermove', (e) => {
+            sliderList.addEventListener('mousemove', (e) => {
                 endX = e.clientX;
                 endY = e.clientY;
     
@@ -129,36 +124,8 @@ function setSliderFunctionality() {
                     isHorizontalSwipe = false;
                   }
             });
-
-            sliderList.addEventListener('touchmove', (e) => {
-                endX = e.touches[0].clientX;
-                endY = e.touches[0].clientY;
     
-                if (Math.abs(startX - endX) > Math.abs(startY - endY)) {
-                    e.preventDefault();
-                    isHorizontalSwipe = true;
-                  } else {
-                    isHorizontalSwipe = false;
-                  }
-            });
-    
-            sliderList.addEventListener('pointerup', () => {
-                if (isHorizontalSwipe && Math.abs(startX - endX) > 80) {
-                    if (startX > endX + 50) {
-                        if (currentIndex < sliderItems.length - 1) currentIndex++;
-                    } else if (startX < endX - 50) {
-                        if (currentIndex > 0) currentIndex--;
-                    }
-                    updateSlider();
-                }
-                isHorizontalSwipe = false;
-                startX = null;
-                startY = null;
-                endX = null;
-                endY = null;
-            });
-
-            sliderList.addEventListener('touchend', () => {
+            sliderList.addEventListener('mouseup', () => {
                 if (isHorizontalSwipe && Math.abs(startX - endX) > 80) {
                     if (startX > endX + 50) {
                         if (currentIndex < sliderItems.length - 1) currentIndex++;
