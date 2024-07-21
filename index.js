@@ -121,7 +121,7 @@ function setSliderFunctionality() {
                   sliderList.style.touchAction = 'pan-x';
                 } else {
                   isHorizontalSwipe = false;
-                  sliderList.style.touchAction = 'auto';
+                  sliderList.style.touchAction = 'pan-y';
                 }
                 
             });
