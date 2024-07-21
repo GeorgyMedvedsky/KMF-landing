@@ -118,8 +118,10 @@ function setSliderFunctionality() {
                 endY = e.clientY;
                 if (Math.abs(startX - endX) > Math.abs(startY - endY) && Math.abs(startX - endX) > 10) {
                   isHorizontalSwipe = true;
+                  sliderList.style.touchAction = 'pan-x';
                 } else {
                   isHorizontalSwipe = false;
+                  sliderList.style.touchAction = 'pan-y';
                 }
                 
             });
