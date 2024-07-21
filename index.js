@@ -116,14 +116,9 @@ function setSliderFunctionality() {
             sliderList.addEventListener('pointermove', (e) => {
                 endX = e.clientX;
                 endY = e.clientY;
-                if (Math.abs(startX - endX) > Math.abs(startY - endY) && Math.abs(startX - endX) > 10) {
-                  isHorizontalSwipe = true;
-                  sliderList.style.touchAction = 'pan-x';
-                } else {
-                  isHorizontalSwipe = false;
-                  sliderList.style.touchAction = 'pan-y';
-                }
-                
+                isHorizontalSwipe = Math.abs(endX - startX) > Math.abs(endY - startY) && Math.abs(startX - endX) > 10;
+                if(isHorizontalSwipe) sliderList.style.touchAction = 'pan-x';
+                else sliderList.style.touchAction = 'pan-y';
             });
     
             window.addEventListener('pointerup', (e) => {
