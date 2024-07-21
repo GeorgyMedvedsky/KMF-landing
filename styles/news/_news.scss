@@ -30,12 +30,14 @@
 
         &__cards {
             gap: 24px;
+            display: flex;
+            justify-content: center;
         }
     }
 }
 
 @media screen and (min-width: $res-desktop) {
     .news {
-        padding: 180px calc(50% - 600px) 80px;
+        padding: 180px calc(50% - 640px) 80px;
     }
 }

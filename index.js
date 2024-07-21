@@ -71,29 +71,6 @@ function setSliderFunctionality() {
             const prevBtn = sliderControls.querySelector('.prev');
             const nextBtn = sliderControls.querySelector('.next');
 
-            /* let pressed = false;
-            let startX = 0;
-
-            sliderList.addEventListener('mousedown', function (e) {
-                pressed = true;
-                startX = e.clientX;
-            });
-
-            sliderList.addEventListener('mouseleave', function (e) {
-                pressed = false;
-            });
-
-            sliderList.addEventListener('mousemove', function (e) {
-                if(!pressed) {
-                    return;
-                }
-                this.scrollLeft += startX - e.clientX;
-            });
-
-            window.addEventListener('mouseup', function (e) {
-                pressed = false;
-            }); */
-
             let startX, startY, endX, endY;
             let currentIndex = 0;
             let isHorizontalSwipe = false;
@@ -139,15 +116,15 @@ function setSliderFunctionality() {
             sliderList.addEventListener('pointermove', (e) => {
                 endX = e.clientX;
                 endY = e.clientY;
-    
-                if (Math.abs(startX - endX) > Math.abs(startY - endY)) {
-                    isHorizontalSwipe = true;
-                  } else {
-                    isHorizontalSwipe = false;
-                  }
+                if (Math.abs(startX - endX) > Math.abs(startY - endY) && Math.abs(startX - endX) > 10) {
+                  isHorizontalSwipe = true;
+                } else {
+                  isHorizontalSwipe = false;
+                }
+                
             });
     
-            window.addEventListener('pointerup', () => {
+            window.addEventListener('pointerup', (e) => {
                 if (isHorizontalSwipe && Math.abs(startX - endX) > 70) {
                     if (startX > endX + 50) {
                         if (currentIndex < sliderItems.length - 1) currentIndex++;

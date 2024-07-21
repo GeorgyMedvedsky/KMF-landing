@@ -33,5 +33,9 @@
 @media screen and (min-width: $res-desktop) {
     .business {
         padding: 220px calc(50% - 600px) 0;
+
+        &__cards {
+            justify-content: center;
+        }
     }
 }
