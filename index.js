@@ -130,6 +130,7 @@ function setSliderFunctionality() {
                 isHorizontalSwipe = Math.abs(endX - startX) > Math.abs(endY - startY) && Math.abs(startX - endX) > 10;
 
                 if(isHorizontalSwipe) sliderList.style.touchAction = 'pan-x';
+                else sliderList.style.touchAction = 'pan-y';
             });
     
             window.addEventListener('pointerup', (e) => {
@@ -150,7 +151,6 @@ function setSliderFunctionality() {
                         }
                     }
                     updateSlider();
-                    sliderList.style.touchAction = 'auto';
                 }
 
                 isHorizontalSwipe = false;
