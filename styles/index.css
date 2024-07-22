@@ -1036,9 +1036,24 @@
     justify-content: center;
   }
 }
-@media screen and (min-width: 780px) {
+@media screen and (min-width: 1280px) {
   .footer {
-    padding: 25px calc(50% - 600px) 90px;
+    padding: 32px calc(50% - 600px) 90px;
+    display: flex;
+    justify-content: initial;
+    align-items: flex-start;
+    flex-direction: row;
+  }
+  .footer__menu {
+    margin: 0 0 0 108px;
+    gap: 40px;
+  }
+  .footer__links {
+    width: 185px;
+    flex-wrap: wrap;
+  }
+  .footer__link:has(.social) {
+    margin: 42px 0 0;
   }
 }
 .social {

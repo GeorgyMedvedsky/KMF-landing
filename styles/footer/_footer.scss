@@ -61,8 +61,25 @@
     }
 }
 
-@media screen and (min-width: $res-tablet) {
+@media screen and (min-width: $res-desktop) {
     .footer {
-        padding: 25px calc(50% - 600px) 90px;
+        padding: 32px calc(50% - 600px) 90px;
+        @include flex(flex, initial, flex-start, row);
+
+        &__menu {
+            margin: 0 0 0 108px ;
+            gap: 40px;
+        }
+
+        &__links {
+            width: 185px;
+            flex-wrap: wrap;
+        }
+
+        &__link {
+            &:has(.social) {
+                margin: 42px 0 0;
+            }
+        }
     }
 }
