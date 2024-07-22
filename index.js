@@ -71,7 +71,6 @@ function setSliderFunctionality() {
             const prevBtn = sliderControls.querySelector('.prev');
             const nextBtn = sliderControls.querySelector('.next');
             const lastItemOfList = sliderItems[sliderItems.length - 1];
-            const sliderRect = slider.getBoundingClientRect();
             
             let startX, startY, endX, endY = 0;
             let currentIndex = 0;
@@ -102,6 +101,11 @@ function setSliderFunctionality() {
             }
 
             nextBtn.addEventListener('click', () => {
+                // const sliderRect = slider.getBoundingClientRect();
+                // const lastItemOfListRect = lastItemOfList.getBoundingClientRect();
+
+                // if(lastItemOfListRect.right <= sliderRect.right) {
+                // }
                 if (currentIndex < sliderItems.length - 1) currentIndex++;
                 updateSlider();
             });
@@ -129,6 +133,7 @@ function setSliderFunctionality() {
             });
     
             window.addEventListener('pointerup', (e) => {
+                const sliderRect = slider.getBoundingClientRect();
                 const lastItemOfListRect = lastItemOfList.getBoundingClientRect();
 
                 if (isHorizontalSwipe && Math.abs(startX - endX) > 70) {
