@@ -70,10 +70,13 @@ function setSliderFunctionality() {
             const tabList = sliderControls.querySelector(`.${classes.TABS}`);
             const prevBtn = sliderControls.querySelector('.prev');
             const nextBtn = sliderControls.querySelector('.next');
-
-            let startX, startY, endX, endY;
+            const lastItemOfList = sliderItems[sliderItems.length - 1];
+            const sliderRect = slider.getBoundingClientRect();
+            
+            let startX, startY, endX, endY = 0;
             let currentIndex = 0;
             let isHorizontalSwipe = false;
+            let swipeDirection = '';
 
             createTabs(sliderItems.length);
 
@@ -116,25 +119,38 @@ function setSliderFunctionality() {
             sliderList.addEventListener('pointermove', (e) => {
                 endX = e.clientX;
                 endY = e.clientY;
-                isHorizontalSwipe = Math.abs(endX - startX) > Math.abs(endY - startY) && Math.abs(startX - endX) > 10;
+                
+                if(startX < endX + 70) swipeDirection = 'right';
+                else if(startX + 70 > endX) swipeDirection = 'left';
+                
+                isHorizontalSwipe = swipeDirection === 'right' || swipeDirection === 'left';
+
                 if(isHorizontalSwipe) sliderList.style.touchAction = 'pan-x';
                 else sliderList.style.touchAction = 'pan-y';
             });
     
             window.addEventListener('pointerup', (e) => {
-                if (isHorizontalSwipe && Math.abs(startX - endX) > 70) {
-                    if (startX > endX + 50) {
-                        if (currentIndex < sliderItems.length - 1) currentIndex++;
-                    } else if (startX < endX - 50) {
-                        if (currentIndex > 0) currentIndex--;
+                const lastItemOfListRect = lastItemOfList.getBoundingClientRect();
+
+                if (isHorizontalSwipe) {
+                    if(lastItemOfListRect.right <= sliderRect.right) {
+                        if (swipeDirection === 'left') return;
+                        else if (swipeDirection = 'right') {
+                            if (currentIndex > 0) currentIndex--;
+                        }
+                    } else {
+                        if (swipeDirection === 'left') {
+                            if (currentIndex < sliderItems.length - 1) currentIndex++;
+                        } else if (swipeDirection = 'right') {
+                            if (currentIndex > 0) currentIndex--;
+                        }
                     }
                     updateSlider();
                 }
+
                 isHorizontalSwipe = false;
-                startX = null;
-                startY = null;
-                endX = null;
-                endY = null;
+                swipeDirection = '';
+                startX, startY, endX, endY = 0;
             });
 
             updateSlider();
