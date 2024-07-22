@@ -123,16 +123,15 @@ function setSliderFunctionality() {
                 if(startX < endX + 70) swipeDirection = 'right';
                 else if(startX + 70 > endX) swipeDirection = 'left';
                 
-                isHorizontalSwipe = swipeDirection === 'right' || swipeDirection === 'left';
+                isHorizontalSwipe = Math.abs(endX - startX) > Math.abs(endY - startY) && Math.abs(startX - endX) > 10;
 
                 if(isHorizontalSwipe) sliderList.style.touchAction = 'pan-x';
-                else sliderList.style.touchAction = 'pan-y';
             });
     
             window.addEventListener('pointerup', (e) => {
                 const lastItemOfListRect = lastItemOfList.getBoundingClientRect();
 
-                if (isHorizontalSwipe) {
+                if (isHorizontalSwipe && Math.abs(startX - endX) > 70) {
                     if(lastItemOfListRect.right <= sliderRect.right) {
                         if (swipeDirection === 'left') return;
                         else if (swipeDirection = 'right') {
@@ -146,6 +145,7 @@ function setSliderFunctionality() {
                         }
                     }
                     updateSlider();
+                    sliderList.style.touchAction = 'auto';
                 }
 
                 isHorizontalSwipe = false;
