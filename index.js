@@ -156,6 +156,7 @@ function setSliderFunctionality() {
                 isHorizontalSwipe = false;
                 swipeDirection = '';
                 startX, startY, endX, endY = 0;
+                sliderList.style.touchAction = 'pan-y';
             });
 
             updateSlider();
