@@ -1,4 +1,5 @@
 # KMF
+[test](http://r90646hr.beget.tech/)
 
 KNF - это информационный портал о бизнесе и социальном предпринимательстве.  
 [Ссылка на проект](https://georgymedvedsky.github.io/KMF-landing/)
